@@ -5,8 +5,8 @@ var LocalStrategy   = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 // Database related imports
-var pgp 		= require('pg-promise')(/*options*/);
-var db 			= pgp("postgres://postgres:dom1nion!@127.0.0.1:5432/instads");
+var pgp 		= require('./pgp');
+var db 			= pgp.db;
 // Passport and Auth related imports
 var bcrypt   	= require('bcrypt-nodejs');
 // Logging related imports
@@ -26,17 +26,12 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        done(null, user.id);
+        done(null, {id : user.id, email : user.email});
     });
 
     // used to deserialize the user
-    passport.deserializeUser(function(id, done) {
-		db.one("SELECT * FROM instads_user WHERE id_user = ($1)", [id])
-		.then(function(data){
-			done(null, {id : data.id_user, email : data.email});
-		}, function(reason) {
-			done(null, false);
-		});
+    passport.deserializeUser(function(sessionUser, done) {
+		done(null, sessionUser);
     });
 
     // =========================================================================
@@ -53,7 +48,6 @@ module.exports = function(passport) {
     },
     function(req, email, password, done) {
         // asynchronous
-		
         process.nextTick(function() {
 			// find a user whose email is the same as the forms email
 			// we are checking to see if the user trying to login already exists

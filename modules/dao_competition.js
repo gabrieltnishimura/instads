@@ -32,48 +32,46 @@ CREATE TABLE competition (	id_competition SERIAL PRIMARY KEY,
  *********************************************************
  *********************************************************/
 
-var express = require("express");
-var app = module.exports = express(); // we export new express app here!
-var pg = require("pg");
-var common = require('./common');
-var log = common.log;
-var connectionString = "postgres://postgres:dom1nion!@127.0.0.1:5432/instads";
-var client = new pg.Client(connectionString);
-var uuid = require('node-uuid');
-var multer  = require('multer');
-var auth = require('basic-auth');
-var path = require('path');
-var upload = multer({
+// ---- [start of imports] ----
+// Main Imports - Express and App
+var app 		= require('../server');
+// Database related imports
+var pgp 		= require('./pgp');
+var db 			= pgp.db;
+// Logging related imports
+var common 				= require('./common');
+var log			= common.log;
+// Config related imports
+var cfg 		= require('./config');
+// Uniqueness related imports
+var uuid 		= require('node-uuid');
+// File upload related imports
+var fs 			= require('fs');
+var multer  	= require('multer');
+var upload 		= multer({
 	fileFilter: function (req, file, cb) {
-		if (file.mimetype.indexOf('image') != -1 || // valid image file
-			file.mimetype.indexOf('video') != -1) { // valid video file
-			cb(null, true);
-		} else { // invalid file
-			log.error("Wrong filetype provided");
-			cb(null, false);
+		if(file) {
+			if (file.mimetype.indexOf('image') != -1) { // valid image file
+				cb(null, true);
+			} else { // invalid file
+				log.error("Wrong filetype provided");
+				cb(null, false);
+			}
 		}
 	}, 
 	storage: multer.diskStorage({
 		destination: function (req, file, cb) {
-			cb(null, 'uploads/company/');
+			cb(null, 'uploads/competition/');
 		},
 		filename: function (req, file, cb) {
-			cb(null, uuid.v4() +"."+ file.mimetype.split('/')[1]);
+			if(file) {
+				cb(null, uuid.v4() +"."+ file.mimetype.split('/')[1]);
+			}
 		}
 	}),
-	limits: { fileSize: 50 * 1024 * 1024 }
+	limits: { fileSize: cfg.DEFAULT_MAXIMUM_UPLOAD_LIMIT_COMPANY * 1024 * 1024 }
 });
-
-function handleError(err, done, client, res) {
-	if(!err) return false; // no error occurred, continue with the request
-	log.info(err);
-	if(client) { // error occurred, remove from pool and send error message
-		done(client); 
-	}
-	res.writeHead(500, {'content-type': 'text/plain'});
-	res.end('Server internal error 1');
-	return true;
-}
+// ---- [end of imports] ----
 
 /** Demo upload page! */
 app.get('/post_competition', function (req, res) {
@@ -88,155 +86,194 @@ app.get('/post_competition', function (req, res) {
 							description TEXT NOT NULL,
 							image TEXT NOT NULL )*/
 /** POST ROUTE -- MUST PROVIDE ALL PARAMETERS IN ORDER TO WORK **/
-app.post('/competition', upload.single('image'), function(req, res){
-	var search_parameters = [
+app.post('/api/v1/competitions', upload.single('image'), function(req, res){
+	var q_params = [
 		req.body.title,												// competition title	
 		req.body.description,										// competition description
 		req.body.starts, 											// competition start timestamp
 		req.body.ends, 												// competition end timestamp
-		1, 															// @todo id_company
+		req.body.id_company, 										// @todo id_company
 		(req.file !== undefined) ? req.file.filename : undefined];	// filename in uuid format
-	var v = common.is_data_valid(['string', 'string', 'timestamp', 'timestamp', 'int', 'uuid'], search_parameters);
-	if (!v.success) { // verify errors in provided parameters
-		res.status(400).end(v.error);
-		return;
-	}
+		
+	verifyParams(['string', 'string', 'timestamp', 'timestamp', 'int', 'uuid'], q_params, res);
+	
 	if (common.compare_timestamps(req.body.starts, req.body.ends) < 0) {
 		res.status(400).end({success:false, error:"Before vs After = negative interval"});
 		return;
 	}
-	pg.connect(connectionString, function(err, client, done) { // get a pg client from the connection pool
-		if(handleError(err, done, client, res)) return false; // handle an error from the connection
-
-		var query = "INSERT INTO competition (title, description, starts, ends, posted, id_company, image) VALUES "+
-											"($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6) RETURNING id_competition";
-		
-		//console.log(query); console.log(search_parameters);	
-		client.query(query, search_parameters, function(err, result) {
-			if(handleError(err, done, client, res)) return false; // handle an error from the query
-			log.info("Created competition with id: " + result.rows[0].id_company);
-			res.set({'ETag': result.rows[0].id_company});
-			res.status(201).end();
-		});
-	});	
+	
+	var q = "INSERT INTO competition (title, description, starts, ends, posted, id_company, image) VALUES "+
+			"($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6) RETURNING id_competition";
+	
+	db.one(q, q_params) // query oneOrNone
+	.then(function(data){
+		log.info("Created competition with id: " + data.id_competition);
+		res.set({'ETag': data.id_competition});
+		res.status(201).end();
+	});
 });
 
 /** LIMIT WITHOUT NEED OF PARAMETERS **/
-app.get('/competition', function (req, res) {
-	pg.connect(connectionString, function(err, client, done) { // get a pg client from the connection pool
-		if(handleError(err, done, client, res)) return false; // handle an error from the connection
+app.get('/api/v1/competitions', function (req, res) {
+	var q = "SELECT t.title, t.image, c.name, c.id_company FROM competition t, company c WHERE c.id_company = t.id_company";
+	var q_params = new Array();
+	
+	// Get parameters from URL
+	title = req.query.title;
+	description = req.query.description;
+	company = req.query.company;
+	order = req.query.order;
+	limit = req.query.limit;
+	offset = req.query.offset;
+	
+	if (title !== undefined || company !== undefined || description !== undefined) {
+		q += " AND "
+		// [optional] title
+		if (title !== undefined) {
+			q_params.push("%" + title + "%");
+			q += " t.title ILIKE ($" + q_params.length + ") ";
+		}
+		// [optional] description
+		if (description !== undefined) {
+			q_params.push("%" + description + "%");
+			q += title !== undefined ? " AND" : "";
+			q += " t.description ILIKE ($" + q_params.length + ") ";
+		}
+		// [optional] company
+		if (company !== undefined) {
+			q_params.push(company);
+			q += (title !== undefined || description !== undefined) ? " AND" : "";
+			q += " c.name ILIKE ($" + q_params.length + ") ";
+		}
+	}
+	
+	// ORDER BY 
+	if (order !== undefined) {
+		if (order == "ASC" || order == "DESC") {
+			q_params.push(order);
+			q += " ORDER ($" + q_params.length + ") ";
+		} else {
+			res.status(400).end("Order provided is not ASC neither DESC. Please refer to documentation or provide right parameters");
+		}
+	}
+	
+	// Limit has to be a number
+	if (limit !== undefined && isNaN(limit))
+		res.status(400).end("Limit provided is not a integer number. Please refer to documentation or provide a integer.");
 
-		// if there's no error then query db
-		var query = "SELECT * FROM competition";
-		var search_parameters = new Array();
-		
-		// Get parameters from URL @todo verify parameters
-		title = req.query.title;
-		description = req.query.description;
-		id_company = req.query.id_company;
-		limit = req.query.limit;
-		
-		if (title !== undefined || description !== undefined || id_company !== undefined) {
-			query += " WHERE"
-			if (name !== undefined) {
-				search_parameters.push("%" + title + "%");
-				query += " title ILIKE ($" + search_parameters.length + ") ";
-			} if (description !== undefined) {
-				query += title !== undefined ? " AND" : "";
-				search_parameters.push("%" + description + "%");
-				query += " description ILIKE ($"+ search_parameters.length+") "
-			} if (id_company !== undefined) {
-				query += (title !== undefined || description !== undefined) ? " AND" : "";
-				search_parameters.push(id_company);
-				query += " id_company = ($"+ search_parameters.length+") "
-			}
-		}
-		if (limit !== undefined) {
-			search_parameters.push(limit);
-			query += " LIMIT ($" + search_parameters.length + ") ";
-		}
-		log.info(query); log.info(search_parameters);
-		client.query(query, search_parameters, function(err, result) {
-			if(handleError(err, done, client, res)) return false; // handle an error from the query
-			res.json(result.rows); // return status code 200, application/json and query content
-		});
-	});	
+	// Offset has to be a number
+	if (offset !== undefined && isNaN(offset))
+		res.status(400).end("Offset provided is not a integer number. Please refer to documentation or provide a integer.");
+
+	// DEFAULT LIMIT defined at config.js
+	q_params.push(limit < cfg.DEFAULT_QUERY_LIMIT_POST ? limit : cfg.DEFAULT_QUERY_LIMIT_POST);
+	q += " LIMIT ($" + q_params.length + ") ";
+	
+	// DEFAULT OFFSET is zero
+	q_params.push(offset > 0 ? offset : 0);
+	q += " OFFSET ($" + q_params.length + ") ";
+	
+	// Log Query and Parameters
+	log.info(q); log.info(q_params);
+	
+	// Query posgtres for many results
+	db.any(q, q_params)
+	.then(function(data){
+		res.json(data);
+	}, function(reason){
+		log.error(reason);
+		sendStatus500Error(res);
+	});
 });
 
-app.get('/competition/:id_competition', function (req, res) {
+app.get('/api/v1/competitions/:id_competition', function (req, res) {
 	// Validade parameters from URL
-	if (req.params.id_competition === undefined) {
-		res.status(400);
-		res.end("[BAD REQUEST] Invalid parameters provided.");
-		return;
+	var id_competition = req.params.id_competition;
+	var q = "DELETE FROM competition WHERE id_competition = ($1);";
+
+	if (id_competition === undefined || isNaN(id_competition)) {
+		res.status(400).end("[BAD REQUEST] Invalid parameters provided.");
 	}
-	pg.connect(connectionString, function(err, client, done) { // get a pg client from the connection pool
-		if(handleError(err, done, client, res)) return false; // handle an error from the connection
-		
-		// if there's no error then query db
-		var query = "SELECT name, cnpj, logo FROM company WHERE id_company = ($1)";
-		client.query(query, [req.params.id_competition], function(err, result) {
-			if(handleError(err, done, client, res)) return false; // handle an error from the query
-			if (result.rows.length == 0) {
-				res.status(404);
-				res.end("Resource not found");
-			} else {
-				res.json(result.rows); // return status code 200, application/json and query content
-			}
-		});
-	});	
+	
+	db.one(q, [id_competition])
+	.then(function(data){
+		res.json(data);
+	}, function(reason){
+		if (reason.indexOf('No data returned') != -1) {
+			res.status(404).end("Resource not found");
+		} else {
+			log.error(reason);
+			sendStatus500Error(res);
+		}
+	});
 });
 
 // accept DELETE request at /company/:id_company
-app.delete('/competition/:id_competition', function (req, res) {
+app.delete('/api/v1/competitions/:id_competition', function (req, res) {
 	// Validade parameters from URL
-	if (req.params.id_competition === undefined) {
-		res.status(400);
-		res.end("[BAD REQUEST] Invalid parameters provided.");
-		return;
+	var id_competition = req.params.id_competition;
+	var q = "DELETE FROM competition WHERE id_competition = ($1);";
+
+	if (id_competition === undefined || isNaN(id_competition)) {
+		res.status(400).end("[BAD REQUEST] Invalid parameters provided.");
 	}
-	pg.connect(connectionString, function(err, client, done) { // get a pg client from the connection pool
-		if(handleError(err, done, client, res)) return false; // handle an error from the connection
-		// if there's no error then query db
-		var query = "DELETE FROM company WHERE id_company = ($1)";
-		
-		//@todo VALIDATION
-		client.query(query, [req.params.id_competition], function(err, result) {
-			if(handleError(err, done, client, res)) return false; // handle an error from the query
-			res.json({success: true}); // return status code 200, application/json and query content
-			res.end();
-		});
-	});	
+	
+	db.none(q, [id_competition])
+	.then(function(data){
+		res.status(204).json({success : true});
+	}, function(reason){
+		if (reason.indexOf('No data returned from the query.') != -1) {
+			res.status(404).end("Resource not found");
+		}
+		log.error(reason);
+		sendStatus500Error(res);
+	});
 });
 
 // accept PUT request at /user
-app.put('/competition/:id_competition', upload.single('image'), function (req, res) {
+app.put('/api/v1/competitions/:id_competition', upload.single('image'), function (req, res) {
 	// Validade parameters from request/url
-	var search_parameters = [
+	var q_params = [
 		req.body.title,												// competition title	
 		req.body.description,										// competition description
 		req.body.starts, 											// competition start timestamp
 		req.body.ends, 												// competition end timestamp
-		1, 															// @todo id_company
+		req.body.id_company, 										// @todo id_company
 		(req.file !== undefined) ? req.file.filename : undefined,	// filename in uuid format
-		req.params.id_competition];									// competition id
-	var v = common.is_data_valid(['string', 'string', 'timestamp', 'timestamp', 'int', 'uuid', 'int'], search_parameters);
+		req.params.id_competition];									// id_competition
+
+	verifyParams(['string', 'string', 'timestamp', 'timestamp', 'int', 'uuid', 'int'], q_params, res);
+	
+	var q = "UPDATE competition competition_new SET (title, description, starts, ends, id_company, image) = "+
+			"($1, $2, $3, $4, $5, $6) FROM competition competition_old WHERE "+
+			"competition_new.id_competition = competition_old.id_competition AND competition_new.id_competition = ($6) " + 
+			"RETURNING competition_old.image";
+	
+	if (req.file === undefined) {
+		q = "UPDATE competition SET (title, description, starts, ends, id_company) = "+
+			"($1, $2, $3, $4, $5) WHERE id_competition = ($6);";
+		q_params.splice(q_params.indexOf(undefined),1); // remove undefined
+	}
+	
+	db.oneOrNone(q, q_params) // query oneOrNone
+	.then(function(data){
+		if (req.file_path !== undefined) // if file uploaded, delete old file
+			fs.unlink('./uploads/competition/'+data.file_path);
+		
+		log.info("Updated competition!");
+		res.status(200).json({success : true});
+	});
+});
+
+
+function sendStatus500Error(res) {
+	res.writeHead(500, {'content-type': 'text/plain'});
+	res.end('Server internal error. ');
+}
+
+function verifyParams(types, vars, res) {
+	var v = common.is_data_valid(types, vars);
 	if (!v.success) { // verify errors in provided parameters
 		res.status(400).end(v.error);
-		return;
 	}
-	if (common.compare_timestamps(req.body.starts, req.body.ends) < 0) {
-		res.status(400).end({success:false, error:"Before vs After = negative interval"});
-		return;
-	}
-	pg.connect(connectionString, function(err, client, done) { // get a pg client from the connection pool
-		if(handleError(err, done, client, res)) return false; // handle an error from the connection
-				var query = "UPDATE competition SET (title, description, starts, ends, id_company, image) = "+
-											"($1, $2, $3, $4, $5, $6) WHERE id_competition = ($7)";
-		client.query(query, query_parameteres, function(err, result) {
-			if(handleError(err, done, client, res)) return false; // handle an error from the query
-			log.info("Updated company!");
-			res.json({success : true});
-		});
-	});	
-});
+}

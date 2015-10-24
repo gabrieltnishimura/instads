@@ -1143,3 +1143,225 @@
 {"name":"instads","hostname":"AOFF4","pid":8620,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-23T20:21:39.422Z","v":0}
 {"name":"instads","hostname":"AOFF4","pid":8620,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-23T20:21:39.423Z","v":0}
 {"name":"instads","hostname":"AOFF4","pid":8620,"level":30,"id":6,"email":"gtnishimura@live.com","msg":"","time":"2015-10-23T20:21:43.741Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1440,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T14:25:11.761Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1440,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T14:25:11.765Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6184,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T14:27:13.022Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6524,"level":30,"msg":"[Function]","time":"2015-10-24T14:29:00.662Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6524,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T14:29:00.664Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7040,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:25:36.151Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7040,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:25:36.153Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8600,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:27:44.959Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8600,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:27:44.962Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8500,"level":30,"msg":"","time":"2015-10-24T15:29:40.865Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8500,"level":30,"msg":"false","time":"2015-10-24T15:29:40.866Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9396,"level":30,"msg":"","time":"2015-10-24T15:30:05.016Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9396,"level":30,"msg":"false","time":"2015-10-24T15:30:05.019Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9240,"level":30,"msg":"","time":"2015-10-24T15:31:38.236Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9240,"level":30,"msg":"false","time":"2015-10-24T15:31:38.241Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9868,"level":30,"msg":"","time":"2015-10-24T15:33:58.507Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9868,"level":30,"msg":"false","time":"2015-10-24T15:33:58.509Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6968,"level":30,"msg":"","time":"2015-10-24T15:34:39.660Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6968,"level":30,"msg":"","time":"2015-10-24T15:34:39.661Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6968,"level":30,"msg":"false","time":"2015-10-24T15:34:39.663Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9368,"level":30,"email":"asd@asd.com","password":"asd","msg":"","time":"2015-10-24T15:35:31.579Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9368,"level":30,"msg":"","time":"2015-10-24T15:35:31.836Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9368,"level":30,"id":9,"email":"asd@asd.com","msg":"","time":"2015-10-24T15:35:31.836Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":668,"level":30,"email":"asd@asd.com","password":"asd","msg":"","time":"2015-10-24T15:35:51.314Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":668,"level":30,"msg":"","time":"2015-10-24T15:35:51.321Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":668,"level":30,"msg":"false","time":"2015-10-24T15:35:51.323Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10116,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:38:07.269Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10116,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:38:07.272Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10116,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T15:38:15.258Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9788,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T15:41:50.069Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9788,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T15:41:50.221Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9788,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T15:41:54.571Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9788,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T15:41:55.179Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9788,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T15:41:58.634Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9788,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:42:04.123Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9788,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:42:04.125Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:43.016Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:43.019Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:43.901Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:43.902Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:45.360Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:45.361Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:45.915Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:45.916Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:46.533Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:46.534Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:46.946Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:46.946Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:47.137Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:47.138Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:47.322Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:47.322Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:47.565Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:47.565Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:47.746Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:47.747Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:47.989Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:47.989Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:43:48.240Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8676,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:43:48.240Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:06.888Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:06.891Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:10.370Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:10.370Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:11.694Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:11.695Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:13.333Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:13.333Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:14.601Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:14.602Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:15.324Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:15.325Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:15.772Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:15.773Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:16.040Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:16.040Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:16.455Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1072,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:16.456Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:49.141Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:49.143Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:50.724Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:50.724Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:51.424Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:51.425Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:51.703Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:51.703Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:51.913Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:51.913Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:44:55.879Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:44:55.879Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:45:04.987Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:45:04.988Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:45:06.931Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:45:06.932Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:45:07.795Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:45:07.796Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:45:08.388Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:45:08.389Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:45:09.002Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2896,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:45:09.003Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2436,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:45:40.767Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2436,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:45:40.769Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2436,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:45:42.324Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2436,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:45:42.324Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2436,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:45:44.239Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2436,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:45:44.239Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2436,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:45:44.822Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2436,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:45:44.823Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2436,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:45:52.850Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2436,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:45:52.850Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:46:22.950Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:46:22.952Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:46:24.908Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:46:24.910Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:46:25.839Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:46:25.840Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:46:29.275Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:46:29.275Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:46:32.928Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:46:32.928Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9880,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T15:46:42.993Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9148,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:50:35.465Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9148,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:50:35.467Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9264,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:50:49.629Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9264,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:50:49.631Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9264,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:50:51.335Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9264,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:50:51.335Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9992,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:51:06.953Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9992,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:51:06.955Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9288,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:51:19.544Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9288,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:51:19.548Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9288,"level":30,"id":10,"email":"asd@asd.com","msg":"","time":"2015-10-24T15:51:22.800Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5776,"level":30,"id":10,"email":"asd@asd.com","msg":"","time":"2015-10-24T15:53:42.760Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9080,"level":30,"id":10,"email":"asd@asd.com","msg":"","time":"2015-10-24T15:53:49.495Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9080,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T15:53:54.234Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9080,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:53:57.320Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9080,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:53:57.323Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9080,"level":30,"id":10,"email":"asd@asd.com","msg":"","time":"2015-10-24T15:54:00.011Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9080,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T15:54:05.717Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9080,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T15:54:05.718Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9080,"level":30,"id":11,"email":"gtnishimura@live.com","msg":"","time":"2015-10-24T15:54:07.974Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9080,"level":30,"id":11,"email":"gtnishimura@live.com","msg":"","time":"2015-10-24T15:57:13.123Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1204,"level":30,"id":11,"email":"gtnishimura@live.com","msg":"","time":"2015-10-24T16:07:25.059Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1204,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T16:07:34.588Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1204,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T16:07:34.591Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1204,"level":30,"id":10,"email":"asd@asd.com","msg":"","time":"2015-10-24T16:18:26.523Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9052,"level":30,"msg":"10","time":"2015-10-24T16:20:03.001Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9052,"level":30,"msg":"IMA UNAUTHENTICATED SON OF A BIACH","time":"2015-10-24T16:20:12.049Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9052,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T16:20:18.082Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9052,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T16:20:18.084Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9052,"level":30,"id":10,"email":"asd@asd.com","msg":"","time":"2015-10-24T16:20:19.235Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9412,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T16:38:31.508Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9412,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T16:38:31.510Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9412,"level":30,"msg":"SELECT * FROM post LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T16:38:34.147Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9412,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T16:38:34.147Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":320,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T16:44:26.918Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":320,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T16:44:26.921Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":320,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T16:44:30.938Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":320,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T16:44:30.938Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":320,"level":50,"msg":"No data returned from the query.","time":"2015-10-24T16:44:39.873Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":320,"level":50,"msg":"No data returned from the query.","time":"2015-10-24T16:44:40.355Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":320,"level":50,"msg":"No data returned from the query.","time":"2015-10-24T16:44:40.536Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":320,"level":50,"msg":"No data returned from the query.","time":"2015-10-24T16:44:40.695Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1956,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T16:47:34.259Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1956,"level":30,"msg":"[ 'Coca Cola',\n  '72.077.514/0001-56',\n  'fb49d3e7-b1a7-4a68-9481-73b20caa1f3c.jpeg' ]","time":"2015-10-24T16:47:34.261Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1956,"level":30,"msg":"Created company with id: 97","time":"2015-10-24T16:47:34.272Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1956,"level":30,"msg":"SELECT * FROM company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-24T16:47:57.977Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1956,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-24T16:47:57.978Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3460,"level":30,"msg":"[ 'uuid' ]","time":"2015-10-24T16:56:24.832Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3460,"level":30,"msg":"[ 'fb49d3e7-b1a7-4a68-9481-73b20caa1f3c.jpeg' ]","time":"2015-10-24T16:56:24.833Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'uuid' ]","time":"2015-10-24T16:57:07.699Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'fb49d3e7-b1a7-4a68-9481-73b20caa1f3c.jpeg' ]","time":"2015-10-24T16:57:07.701Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'uuid' ]","time":"2015-10-24T16:57:08.037Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'fb49d3e7-b1a7-4a68-9481-73b20caa1f3c.jpeg' ]","time":"2015-10-24T16:57:08.037Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'uuid' ]","time":"2015-10-24T16:57:08.409Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'fb49d3e7-b1a7-4a68-9481-73b20caa1f3c.jpeg' ]","time":"2015-10-24T16:57:08.409Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T16:58:04.567Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'Pepsi Inc',\n  '03.134.910/0002-36',\n  '9c0ab639-b559-4abb-b9a1-acc5fb626e2b.png' ]","time":"2015-10-24T16:58:04.567Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"Created company with id: 98","time":"2015-10-24T16:58:04.574Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T16:58:10.802Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'Pepsi Inc', '03.134.910/000s2-36', undefined ]","time":"2015-10-24T16:58:10.802Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":50,"err":{"message":"null value in column \"logo\" violates not-null constraint","name":"error","stack":"error: null value in column \"logo\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"logo\" violates not-null constraint","time":"2015-10-24T16:58:10.810Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T16:59:34.457Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'Pepsi Inc',\n  '03.134.910/000s2-36',\n  'e523a6f3-c3c0-4621-bad4-1cb386182fa7.png' ]","time":"2015-10-24T16:59:34.457Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"Created company with id: 100","time":"2015-10-24T16:59:34.462Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T17:00:21.270Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'asd', 'asd', 'aee678e1-338b-4edf-8b4a-0b2109dd3b72.png' ]","time":"2015-10-24T17:00:21.271Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"Created company with id: 101","time":"2015-10-24T17:00:21.276Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T17:00:29.597Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'ads',\n  '03.134.910/00s02-36',\n  '75e27140-ac2e-4bb5-8b64-94e5176da84f.jpeg' ]","time":"2015-10-24T17:00:29.599Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"Created company with id: 102","time":"2015-10-24T17:00:29.600Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T17:00:36.417Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"[ 'ads',\n  '03.134.910/00s302-36',\n  '02e75969-5b1d-48b0-a3bc-2bbe6a1ff0a8.jpeg' ]","time":"2015-10-24T17:00:36.417Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":10204,"level":30,"msg":"Created company with id: 103","time":"2015-10-24T17:00:36.420Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9896,"level":30,"msg":"[ 'uuid' ]","time":"2015-10-24T17:05:56.642Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9896,"level":30,"msg":"[ 'fb49d3e7-b1a7-4a68-9481-73b20caa1f3c.jpeg' ]","time":"2015-10-24T17:05:56.644Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":9896,"level":30,"id":10,"email":"asd@asd.com","msg":"","time":"2015-10-24T17:06:03.070Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-24T19:04:04.454Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'PSIPEPS!!!',\n  '84.865.945/0001-66',\n  'd5866eff-8d6f-4d08-a45c-1cb3719859a0.jpeg',\n  'undefined' ]","time":"2015-10-24T19:04:04.456Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-24T19:04:04.515Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined, 'undefined' ]","time":"2015-10-24T19:04:04.516Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T19:04:06.350Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-66',\n  'bf4a846d-556e-4552-873b-a7f31c648b72.jpeg' ]","time":"2015-10-24T19:04:06.350Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"Created company with id: 104","time":"2015-10-24T19:04:06.364Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T19:04:06.440Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-56',\n  'c8f0c27c-807a-4fc6-93c6-2490254d2efe.jpeg' ]","time":"2015-10-24T19:04:06.445Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"Created company with id: 105","time":"2015-10-24T19:04:06.479Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T19:04:06.480Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ undefined,\n  '84.865.945/0001-66',\n  '0de46bf3-d904-471f-a68d-3a22d27bb399.jpeg' ]","time":"2015-10-24T19:04:06.480Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":50,"err":{"message":"null value in column \"name\" violates not-null constraint","name":"error","stack":"error: null value in column \"name\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"name\" violates not-null constraint","time":"2015-10-24T19:04:06.487Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T19:04:06.499Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'Pepsi',\n  undefined,\n  '09395406-8aba-41da-8642-6b5d702c0ea2.jpeg' ]","time":"2015-10-24T19:04:06.500Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":50,"err":{"message":"null value in column \"cnpj\" violates not-null constraint","name":"error","stack":"error: null value in column \"cnpj\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"cnpj\" violates not-null constraint","time":"2015-10-24T19:04:06.504Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-24T19:04:06.514Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined ]","time":"2015-10-24T19:04:06.515Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":50,"err":{"message":"null value in column \"logo\" violates not-null constraint","name":"error","stack":"error: null value in column \"logo\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\Desktop\\instads\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"logo\" violates not-null constraint","time":"2015-10-24T19:04:06.521Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-24T19:04:06.534Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'PSIPEPS!!!',\n  '84.865.945/0001-66',\n  '9b5fb78f-a47f-47f7-b2d0-2b6b82cc7d12.jpeg',\n  '104' ]","time":"2015-10-24T19:04:06.534Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"Updated company! ","time":"2015-10-24T19:04:06.548Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-24T19:04:06.559Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined, '104' ]","time":"2015-10-24T19:04:06.559Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4100,"level":30,"msg":"Updated company! ","time":"2015-10-24T19:04:06.562Z","v":0}

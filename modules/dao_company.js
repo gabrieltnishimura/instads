@@ -26,26 +26,21 @@ CREATE TABLE company (	id_company SERIAL PRIMARY KEY,
 
 // ---- [start of imports] ----
 // Main Imports - Express and App
-var express = require("express");
-var app = module.exports = express(); // we export new express app here!
-
-var pgp = require('pg-promise')(/*options*/);
-var db = pgp("postgres://postgres:dom1nion!@127.0.0.1:5432/instads");
-
+var app 		= require('../server');
+// Database related imports
+var pgp 		= require('./pgp');
+var db 			= pgp.db;
 // Logging related imports
-var common = require('./common');
-var log = common.log;
-
+var common 		= require('./common');
+var log			= common.log;
 // Config related imports
-var cfg = require('./config');
-
+var cfg 		= require('./config');
 // Uniqueness related imports
-var uuid = require('node-uuid');
-
+var uuid 		= require('node-uuid');
 // File upload related imports
-var fs = require('fs');
-var multer  = require('multer');
-var upload = multer({
+var fs 			= require('fs');
+var multer  	= require('multer');
+var upload 		= multer({
 	fileFilter: function (req, file, cb) {
 		if(file) {
 			if (file.mimetype.indexOf('image') != -1) { // valid image file
@@ -70,11 +65,6 @@ var upload = multer({
 });
 // ---- [end of imports] ----
 
-function sendStatus500Error(res) {
-	res.writeHead(500, {'content-type': 'text/plain'});
-	res.end('Server internal error. ');
-}
-
 /** Demo upload page! */
 app.get('/post_company', function (req, res) {
 	// show a file upload form
@@ -91,11 +81,7 @@ app.post('/api/v1/companies', upload.single('logo'), function(req, res) {
 	var q_params = [req.body.name, 											// company name
 					req.body.cnpj, 										  	// company cnpj
 					req.file !== undefined ? req.file.filename : undefined];// filename in uuid format
-	var v = common.is_data_valid(['string', 'cnpj', 'uuid'], q_params);
-	if (!v.success) { // verify errors in provided parameters
-		res.status(400).end(v.error);
-		return;
-	}
+	verifyParams(['string', 'cnpj', 'uuid'], q_params, res);
 	
 	// query posgres for one result
 	db.one("INSERT INTO company (name, cnpj, logo) VALUES ($1, $2, $3) RETURNING id_company", q_params)
@@ -224,6 +210,11 @@ app.put('/api/v1/companies/:id_company', upload.single('logo'), function (req, r
 		res.status(200).json({success : true});
 	});
 });
+
+function sendStatus500Error(res) {
+	res.writeHead(500, {'content-type': 'text/plain'});
+	res.end('Server internal error. ');
+}
 
 function verifyParams(types, vars, res) {
 	var v = common.is_data_valid(types, vars);

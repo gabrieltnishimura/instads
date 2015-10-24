@@ -10,13 +10,13 @@ var pgp = require('pg-promise')(/*options*/);
 var db = pgp("postgres://postgres:dom1nion!@127.0.0.1:5432/instads");
 
 function returnHttpRequest(form) {
-		return http.request({ // creating request
-			method: 'POST',
-			host: 'localhost',
-			port: 3000,
-			path: '/api/v1/companies',
-			headers: form.getHeaders()
-		});
+	return http.request({ // creating request
+		method: 'POST',
+		host: 'localhost',
+		port: 3000,
+		path: '/api/v1/companies',
+		headers: form.getHeaders()
+	});
 }
 
 function setFormParameters(params) {
@@ -27,7 +27,7 @@ function setFormParameters(params) {
 	return form;
 }
 
-describe('Company API', function(){
+describe('Company API', function() {
 	var request, id_company, form, obj;
 	beforeEach(function(done){
 		obj = {name: 'Pepsi', cnpj: '84.865.945/0001-66', logo: './view/css/img/coca_cola.jpg'};

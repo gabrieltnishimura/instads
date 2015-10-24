@@ -1,0 +1,17 @@
+{
+  "name": "connect-pg-promise",
+  "version": "1.0.0",
+  "description": "A simple, minimal PostgreSQL session store for Connect/Express adapted from connect-pg-simple",
+  "author": {
+    "name": "Gabriel Takaoka Nishimura",
+    "email": "gabrieltnishimura@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "pgp": "1.11.0"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "main": "index.js"
+}

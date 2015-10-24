@@ -52,11 +52,10 @@ CREATE TABLE user_likes (id_user INTEGER REFERENCES instads_user(id_user),
 
 // ---- [start of imports] ----
 // Main Imports - Express and App
-var express 	= require("express");
-var app			= module.exports = express(); // we export new express app here!
+var app 		= require('../server');
 // Database related imports
-var pgp 		= require('pg-promise')(/*options*/);
-var db 			= pgp("postgres://postgres:dom1nion!@127.0.0.1:5432/instads");
+var pgp 		= require('./pgp');
+var db 			= pgp.db;
 // Logging related imports
 var common 		= require('./common');
 var log 		= common.log;
@@ -95,36 +94,6 @@ var upload 	= multer({
 });
 // ---- [end of imports] ----
 
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())	// if user is authenticated in the session, carry on 
-        return next();
-
-    res.status(403).end({error:"Unauthorized..."});
-}
-
-function sendStatus500Error(res) {
-	res.writeHead(500, {'content-type': 'text/plain'});
-	res.end('Server internal error. ');
-}
-
-function verifyParams(types, vars, res) {
-	var v = common.is_data_valid(types, vars);
-	if (!v.success) { // verify errors in provided parameters
-		res.status(400).end(v.error);
-	}
-}
-
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
-    // if user is authenticated in the session, carry on 
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-}
-
 app.get('/logout', isLoggedIn, function(req, res) {
 	req.logout();
 	res.redirect('/');
@@ -153,7 +122,7 @@ app.post('/login', function(req, res, next) {
 app.post('/authentication', function(req, res, next) {
 	passport.authenticate('local-signup', function(err, user, info) {
 		if (err) { return next(err); }
-		if (!user) { return res.redirect('/login'); }
+		if (!user) { return res.redirect('login.html'); }
 	})(req, res, next);
 });
 
@@ -164,10 +133,9 @@ app.post('/authentication', function(req, res, next) {
 app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 
 // handle the callback after facebook has authenticated the user
-app.get('/auth/facebook/callback',
-	passport.authenticate('facebook', {
-		successRedirect : '/api/v1/companies',
-		failureRedirect : '/'
+app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+	successRedirect : '/api/v1/companies',
+	failureRedirect : '/'
 }));
 
 app.get	('/oi', isLoggedIn, function(req, res, next) {
@@ -175,7 +143,7 @@ app.get	('/oi', isLoggedIn, function(req, res, next) {
 	res.status(200).end("I HAVE SOME KIND OF PERMISSION! yeye");
 }); 
 
-app.put('/users', isLoggedIn, upload.single('avatar'), function(req, res){
+app.put('/users', upload.single('avatar'), function(req, res){
 	var q_params = [
 		req.body.name,												// user name
 		req.body.email, 											// user email
@@ -202,3 +170,25 @@ app.put('/users', isLoggedIn, upload.single('avatar'), function(req, res){
 		res.status(200).json({success : true});
 	});
 });
+
+function sendStatus500Error(res) {
+	res.writeHead(500, {'content-type': 'text/plain'});
+	res.end('Server internal error. ');
+}
+
+function verifyParams(types, vars, res) {
+	var v = common.is_data_valid(types, vars);
+	if (!v.success) { // verify errors in provided parameters
+		res.status(400).end(v.error);
+	}
+}
+
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated())
+        return next();
+
+    // if they aren't redirect them to the home page
+	res.status(403).end({error:"Unauthorized..."});
+}
