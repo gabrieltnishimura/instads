@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/css/jquery.datetimepicker.css"/>
+	</head>
+	<body>
+		<form action="/competition" enctype="multipart/form-data" method="POST">
+			<input type="text" placeholder="Nome da competicao" name="title" /><br>
+			<textarea placeholder="Descricao da competicao, regras, etc" name="description" cols="50" rows="10"></textarea><br>
+			<input type="text" name="starts" /><br>
+			<input type="text" name="ends" /><br>
+			<input type="file" name="image" /><br>
+			<input type="hidden" name="timezone" />
+			<input type="submit" value="Upload" />
+		</form>
+	</body>
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.datetimepicker.full.js"></script>
+	<script src="js/jstz-1.0.4.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("input[name=\'starts\']").datetimepicker({mask:"9999/19/39 29:59",minDate:"-1970/01/02"});
+			$("input[name=\'ends\']").datetimepicker({mask:"9999/19/39 29:59",minDate:"-1970/01/02"});
+			$("input[name=\'timezone\']").val(jstz.determine().name());
+		});
+	</script>
+</html>
