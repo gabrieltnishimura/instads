@@ -14,10 +14,10 @@ const DEFAULT_MAXIMUM_UPLOAD_LIMIT_COMPETITION = 20;
 module.exports = {
 
     'facebookAuth' : {
-        'clientID'      : '397424690433990', // your App ID
-        'clientSecret'  : '25f5cb8ad41dee85a1fd0da9e429eba8', // your App Secret
+        'clientID'      : 'nope', // your App ID
+        'clientSecret'  : 'noes', // your App Secret
         'callbackURL'   : 'http://localhost:3000/auth/facebook/callback',
-		'accessToken' 	: '397424690433990|DfvftNF_mRlYF27VbMoj_8dzpiw' // App Access Token
+		'accessToken' 	: 'nope' // App Access Token
     },
 
     'twitterAuth' : {

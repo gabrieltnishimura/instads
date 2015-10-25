@@ -1,5 +1,5 @@
 var https = require('https');
-var cfg = require("./config");
+var cfg = require('C:/Users/U/Desktop/config.js');
 var common = require('./common');
 var log = common.log;
 
@@ -7,7 +7,7 @@ exports.getUserToken = function(userTOK) {
 	var debug_user_token = {
 		host: 'graph.facebook.com',
 		port: '443',
-		path: '/oauth/debug_token?input_token='+userTOK+'&access_token='+cfg.fb.accessToken,
+		path: '/oauth/debug_token?input_token='+userTOK+'&access_token='+cfg.facebookAuth.accessToken,
 		method: 'GET'
 	};		
 	
@@ -25,11 +25,11 @@ exports.getUserToken = function(userTOK) {
 	});
 }
 
-exports.getAppToken = function(userTOK) {
+exports.getAppToken = function() {
 	var get_apptoken = {
 		host: 'graph.facebook.com',
 		port: '443',
-		path: '/oauth/access_token?client_id='+cfg.fb.clientID+'&client_secret='+cfg.fb.clientSecret+'&grant_type=client_credentials',
+		path: '/oauth/access_token?client_id='+cfg.facebookAuth.clientID+'&client_secret='+cfg.facebookAuth.clientSecret+'&grant_type=client_credentials',
 		method: 'GET'
 	};
 	

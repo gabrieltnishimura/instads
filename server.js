@@ -11,7 +11,6 @@ var bunyan			= require('bunyan');
 var common 			= require('./modules/common');
 var log 			= common.log;
 // Auth
-var config 			= require("./modules/config");
 var passport		= require('passport');
 var session      	= require('express-session');
 var pgSession 		= require('connect-pg-promise')(session);
@@ -46,4 +45,3 @@ require("./modules/dao_post");
 require("./modules/dao_user");
 require("./modules/dao_company");
 require("./modules/dao_competition");
-app.set('api_secret', config.secret); // secret variable

@@ -13,7 +13,7 @@ var bcrypt   	= require('bcrypt-nodejs');
 var common 		= require('./common');
 var log 		= common.log;
 // General Configs
-var cfg 		= require('./config');
+var cfg 		= require('C:/Users/U/Desktop/config.js');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
