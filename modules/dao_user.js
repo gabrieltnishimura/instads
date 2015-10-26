@@ -143,7 +143,7 @@ app.get	('/oi', isLoggedIn, function(req, res, next) {
 	res.status(200).end("I HAVE SOME KIND OF PERMISSION! yeye");
 }); 
 
-app.put('/users', upload.single('avatar'), function(req, res){
+app.put('/users', isLoggedIn, upload.single('avatar'), function(req, res){
 	var q_params = [
 		req.body.name,												// user name
 		req.body.email, 											// user email

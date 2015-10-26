@@ -2,19 +2,19 @@
  ***********************COMPETITION***********************
  *********************************************************
  * Set of functions that implement CRUD operations using a 
- * postgres driver. This specific file - dao_company.js - 
+ * postgres driver. This specific file - dao_competition.js - 
  * declares methods related to the Competition class, which
- * is detailed below, together with the usage of the methods
- * in a RESTful application.
- * competition JSON object : 
+ * is detailed below, as well as describes the usage of the 
+ * methods in a RESTful application.
+ * Competition JSON object : 
 	{
 		id_competition : [int], 
 		title : [string], 
 		id_company : [int]
 		description : [string], 
-		starts : [date],
-		ends : [date], 
-		posted : [date],
+		starts : [timestamp],
+		ends : [timestamp], 
+		posted : [timestamp],
 		image : [string]
 	}
  *
@@ -45,6 +45,8 @@ var log			= common.log;
 var cfg 		= require('./config');
 // Uniqueness related imports
 var uuid 		= require('node-uuid');
+// Timestamp and timezone related imports
+var moment = require('moment-timezone');
 // File upload related imports
 var fs 			= require('fs');
 var multer  	= require('multer');
@@ -65,7 +67,7 @@ var upload 		= multer({
 		},
 		filename: function (req, file, cb) {
 			if(file) {
-				cb(null, uuid.v4() +"."+ file.mimetype.split('/')[1]);
+				cb(null, uuid.v4() +"."+ file.mimetype.split('/')[1]); //ignores filename extension
 			}
 		}
 	}),
@@ -96,20 +98,23 @@ app.post('/api/v1/competitions', upload.single('image'), function(req, res){
 		(req.file !== undefined) ? req.file.filename : undefined];	// filename in uuid format
 		
 	verifyParams(['string', 'string', 'timestamp', 'timestamp', 'int', 'uuid'], q_params, res);
+	//q_params[2] = moment().tz(req.body.starts, req.body.timezone).format("YYYY-MM-DD HH:mm");
+	//q_params[3] = moment().tz(req.body.ends, req.body.timezone).format("YYYY-MM-DD HH:mm");
 	
 	if (common.compare_timestamps(req.body.starts, req.body.ends) < 0) {
-		res.status(400).end({success:false, error:"Before vs After = negative interval"});
-		return;
+		res.status(400).json({success:false, error:"Before vs After = negative interval"});
 	}
 	
 	var q = "INSERT INTO competition (title, description, starts, ends, posted, id_company, image) VALUES "+
 			"($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6) RETURNING id_competition";
 	
 	db.one(q, q_params) // query oneOrNone
-	.then(function(data){
+	.then(function(data) {
 		log.info("Created competition with id: " + data.id_competition);
 		res.set({'ETag': data.id_competition});
 		res.status(201).end();
+	}, function(err) {
+		//log.info("something went wrong", err);
 	});
 });
 
@@ -151,9 +156,9 @@ app.get('/api/v1/competitions', function (req, res) {
 	if (order !== undefined) {
 		if (order == "ASC" || order == "DESC") {
 			q_params.push(order);
-			q += " ORDER ($" + q_params.length + ") ";
+			q += " ORDER BY title $" + q_params.length + " ";
 		} else {
-			res.status(400).end("Order provided is not ASC neither DESC. Please refer to documentation or provide right parameters");
+			res.status(400).end("Order provided isn't ASC nor DESC. Please refer to documentation or provide right parameters");
 		}
 	}
 	
@@ -239,13 +244,13 @@ app.put('/api/v1/competitions/:id_competition', upload.single('image'), function
 		req.body.starts, 											// competition start timestamp
 		req.body.ends, 												// competition end timestamp
 		req.body.id_company, 										// @todo id_company
-		(req.file !== undefined) ? req.file.filename : undefined,	// filename in uuid format
-		req.params.id_competition];									// id_competition
-
-	verifyParams(['string', 'string', 'timestamp', 'timestamp', 'int', 'uuid', 'int'], q_params, res);
+		req.params.id_competition,									// id_competition
+		(req.file !== undefined) ? req.file.filename : undefined];	// filename in uuid format
+		
+	verifyParams(['string', 'string', 'timestamp', 'timestamp', 'int', 'int', 'uuid'], q_params, res);
 	
 	var q = "UPDATE competition competition_new SET (title, description, starts, ends, id_company, image) = "+
-			"($1, $2, $3, $4, $5, $6) FROM competition competition_old WHERE "+
+			"($1, $2, $3, $4, $5, $7) FROM competition competition_old WHERE "+
 			"competition_new.id_competition = competition_old.id_competition AND competition_new.id_competition = ($6) " + 
 			"RETURNING competition_old.image";
 	
@@ -262,6 +267,8 @@ app.put('/api/v1/competitions/:id_competition', upload.single('image'), function
 		
 		log.info("Updated competition!");
 		res.status(200).json({success : true});
+	}, function(reason) {
+		log.info(reason);
 	});
 });
 

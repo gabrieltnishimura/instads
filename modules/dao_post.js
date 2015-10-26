@@ -91,19 +91,20 @@ app.get('/send_upload', function (req, res) {
 });
 
 /** POST ROUTE -- MUST PROVIDE ALL PARAMETERS IN ORDER TO WORK **/
-app.post('/api/v1/posts', upload.single('post_file'), function(req, res) {
+app.post('/api/v1/posts', isLoggedIn, upload.single('post_file'), function(req, res) {
 	var q_params = [
 		req.body.title, 										  // post title
 		req.body.description, 									  // post description
 		(req.file !== undefined) ? req.file.filename : undefined, // filename in uuid format
 		(req.file !== undefined) ? req.file.mimetype : undefined, // file type in mimetype
-		req.user.id];											  // id_creator @todo
+		req.body.id_competition,								  // id_competition
+		req.user.id];											  // id_creator
 
-	verifyParams(['string', 'string', 'uuid', 'mimetype', 'int'], q_params, res);
+	verifyParams(['string', 'string', 'uuid', 'mimetype', 'int', 'int'], q_params, res);
 
 	// query posgres for one result
-	db.one(	"INSERT INTO post (title, description, file_path, mimetype, time_posted, id_creator) "+
-			"VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, $5) RETURNING id_post", q_params)
+	db.one(	"INSERT INTO post (title, description, file_path, mimetype, time_posted, id_competition, id_creator) "+
+			"VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6) RETURNING id_post", q_params)
 	.then(function(data){
 		log.info("Created post with id: " + data.id_post);
 		res.set({'ETag': data.id_post});
@@ -114,22 +115,39 @@ app.post('/api/v1/posts', upload.single('post_file'), function(req, res) {
 	});	
 });
 
-app.post('/api/v1/votes/:id_post', function(req, res) {
+/** VOTATION ROUTE -- MUST PROVIDE ALL PARAMETERS IN ORDER TO WORK **/
+app.post('/api/v1/votes/:id_post', isLoggedIn, function(req, res) {
 	if (req.params.id_post !== undefined && !isNaN(req.params.id_post)) {
 		if (req.query.op !== undefined && req.query.op == "increment")  {
-			db.one(	"UPDATE post SET votes = votes + 1 WHERE id_post = $1 RETURNING votes", [req.params.id_post])
-			.then(function(data){
-				res.json({votes:data.votes});
-			}, function(reason){
-				res.status(404).end("Post was not found");
-			});	
+			db.none("SELECT * FROM user_votes WHERE id_user = ($1) AND id_post = ($2)", [req.user.id, req.params.id_post])
+			.then(function(data){ // there first time of vote
+				db.one("UPDATE post SET votes = votes + 1 WHERE id_post = $1 RETURNING votes", [req.params.id_post])
+				.then(function(data){
+					db.one("INSERT INTO user_votes (id_user, id_post) VALUES ($1, $2)", [req.user.id, req.params.id_post])
+					.then(function(data){
+						res.json({votes:data.votes});
+					});	
+				}, function(reason){
+					res.status(404).end("Post was not found");
+				});	
+			}, function(reason) { // already voted
+				res.status(400).end("User alredy voted in this post");
+			});
 		} else if (req.query.op !== undefined && req.query.op == "decrement")  {
-			db.one(	"UPDATE post SET votes = votes - 1 WHERE id_post = $1 RETURNING votes", [req.params.id_post])
-			.then(function(data){
-				res.json({votes:data.votes});
-			}, function(reason){
-				res.status(404).end("Post was not found");
-			});	
+			db.one("SELECT * FROM user_votes WHERE id_user = ($1) AND id_post = ($2)", [req.user.id, req.params.id_post])
+			.then(function(data) { // has to find vote
+				db.one("UPDATE post SET votes = votes - 1 WHERE id_post = $1 RETURNING votes", [req.params.id_post])
+				.then(function(data){
+					db.one("DELETE FROM user_votes WHERE id_user = ($1) AND id_post = ($2);", [req.user.id, req.params.id_post])
+					.then(function(data){
+						res.json({votes:data.votes});
+					});	
+				}, function(reason){
+					res.status(404).end("Post was not found");
+				});	
+			}, function(reason) { // never voted before
+				res.status(400).end("User never voted in this post");
+			});
 		}
 	}
 });
@@ -142,12 +160,13 @@ app.get('/api/v1/posts', function (req, res) {
 	// Get parameters from URL
 	title = req.query.title;
 	id_creator = req.query.id_creator === undefined ? undefined : parseInt(req.query.id_creator);
+	id_competition = req.query.id_competition === undefined ? undefined : parseInt(req.query.id_competition);
 	mimetype = req.query.mimetype;
 	order = req.query.order;
 	limit = req.query.limit;
 	offset = req.query.offset;
 	
-	if (title !== undefined || id_creator !== undefined || mimetype !== undefined) {
+	if (title !== undefined || id_creator !== undefined || id_competition !== undefined || mimetype !== undefined) {
 		q += " WHERE "
 		// [optional] title
 		if (title !== undefined) {
@@ -164,11 +183,21 @@ app.get('/api/v1/posts', function (req, res) {
 				q += " id_creator = ($" + q_params.length + ") ";
 			}
 		}
+		// [optional] id_competition
+		if (id_competition !== undefined) {
+			if (isNaN(id_competition)) {
+				res.status(400).end("Creator provided is not a integer number. Please refer to documentation or provide a integer.");
+			} else {
+				q_params.push(id_competition);
+				q += (title !== undefined || id_creator !== undefined) ? " AND" : "";
+				q += " id_competition = ($" + q_params.length + ") ";
+			}
+		}
 		// [optional] mimetype
 		if (mimetype !== undefined) {
 			q_params.push(mimetype);
-			query += (title !== undefined || id_creator !== undefined) ? " AND" : "";
-			query += " mimetype = ($" + q_params.length + ") ";
+			query += (title !== undefined || id_creator !== undefined || id_competition !== undefined) ? " AND" : "";
+			query += " mimetype ILIKE ($" + q_params.length + ") ";
 		}
 	}
 	
@@ -176,7 +205,7 @@ app.get('/api/v1/posts', function (req, res) {
 	if (order !== undefined) {
 		if (order == "ASC" || order == "DESC") {
 			q_params.push(order);
-			q += " ORDER ($" + q_params.length + ") ";
+			q += " ORDER BY title $" + q_params.length + " ";
 		} else {
 			res.status(400).end("Order provided is not ASC neither DESC. Please refer to documentation or provide right parameters");
 		}
@@ -235,7 +264,7 @@ app.get('/api/v1/posts/:id_post', function (req, res) {
 });
 
 // accept DELETE request at /api/v1/posts/:id_post
-app.delete('/api/v1/posts/:id_post', function (req, res) {
+app.delete('/api/v1/posts/:id_post', isLoggedIn, function (req, res) {
 	// Validade parameters from URL
 	var id_post = req.params.id_post;
 	var q = "DELETE FROM post WHERE id_post = ($1);";
@@ -257,7 +286,7 @@ app.delete('/api/v1/posts/:id_post', function (req, res) {
 });
 
 // accept PUT request at /api/v1/posts/:id_post
-app.put('/api/v1/posts/:id_post', upload.single('post_file'), function (req, res) {
+app.put('/api/v1/posts/:id_post', isLoggedIn, upload.single('post_file'), function (req, res) {
 	// Validade parameters from request/url
 	var q_params = [
 		req.body.title, 										 	// post title
@@ -299,5 +328,27 @@ function verifyParams(types, vars, res) {
 	var v = common.is_data_valid(types, vars);
 	if (!v.success) { // verify errors in provided parameters
 		res.status(400).end(v.error);
+	}
+}
+
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+	// Cheater MacCheaterson
+	var token = cfg.app_secret;
+	if (req.body.access_token !== undefined && req.body.access_token == token ||
+		req.query.access_token !== undefined && req.query.access_token == token) {
+		db.one("SELECT id_user FROM instads_user LIMIT 1", [])
+		.then(function(data){
+			req.user.id = data.id_user;
+//			req.login({id : data.id_user, email : data.email}, function(err) {});
+			return next();
+		});
+	} else {
+		// if user is authenticated in the session, carry on 
+		if (req.isAuthenticated())
+			return next();
+
+		// if they aren't redirect them to the home page
+		res.status(403).end({error:"Unauthorized..."});
 	}
 }

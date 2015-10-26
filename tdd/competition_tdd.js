@@ -1,33 +1,180 @@
-var http = require('http');
-var chai = require('chai');
-var assert = chai.assert;
-var expect = chai.expect;
-var options = {
-  host: 'localhost',
-  path: '/posts',
-  port: '3000',
-};
+/** TEST DRIVEN DEVELOPMENT CASE: COMPETITION */
 
-describe('/posts', function(){
-	it('should respond successfully to GET',function(done){
-		var req = http.get(options, function(res) {
-			console.log('STATUS: ' + res.statusCode);
-			console.log('HEADERS: ' + JSON.stringify(res.headers));
-			expect(res.statusCode).to.equal(200);
-			// Buffer the body entirely for processing as a whole.
-			var bodyChunks = [];
-			res.on('data', function(chunk) {
-				// You can process streamed parts here...
-				bodyChunks.push(chunk);
-			}).on('end', function() {
-				var body = Buffer.concat(bodyChunks);
-				console.log('BODY: ' + body);
-				done();
-			})
-		});
+var http 		= require('http');
+var chai 		= require('chai');
+var assert 		= chai.assert;
+var expect 		= chai.expect;
+var FormData 	= require('form-data');
+var fs 			= require('fs');
+var pgp 		= require('pg-promise')(/*options*/);
+var db 			= pgp("postgres://postgres:dom1nion!@127.0.0.1:5432/instads");
+var moment 		= require('moment');
+				moment().format();
 
-		req.on('error', function(e) {
-			console.log('ERROR: ' + e.message);
-		});
+function returnHttpRequest(form) {
+	return http.request({ // creating request
+		method: 'POST',
+		host: 'localhost',
+		port: 3000,
+		path: '/api/v1/competitions',
+		headers: form.getHeaders()
 	});
+}
+
+function setFormParameters(params) {
+	var form = new FormData();
+	if (params.title !== undefined) form.append('title', params.title);
+	if (params.description !== undefined) form.append('description', params.description);
+	if (params.starts !== undefined) form.append('starts', params.starts);
+	if (params.ends !== undefined) form.append('ends', params.ends);
+	if (params.timezone !== undefined) form.append('timezone', params.timezone);
+	if (params.id_company !== undefined) form.append('id_company', params.id_company);
+	if (params.image !== undefined) form.append('image', fs.createReadStream(params.image));
+	return form;
+}
+
+describe('Competition API', function() {
+	var request, id_competition, form, obj;
+	beforeEach(function(done) {
+		obj =
+		{
+			title: 'SUPER DUPER TITLE0', 
+			description: 'desc_here0',  	
+			starts: "2015-02-02 10:23",
+			ends: "2015-02-03 16:23",
+			timezone: 'America/Sao_Paulo',
+			id_company: '97',
+			image: './view/css/img/coca_cola.jpg'
+		};
+		form = setFormParameters(obj);
+		request = returnHttpRequest(form);
+		done();
+	});
+	it('Should return 201(CREATED) to POST request',function(done){
+		form.pipe(request);
+
+		request.on('response', function(res) {
+			expect(res.statusCode).to.equal(201);
+			id_competition = res.headers.etag;
+			done();
+		}); //request
+	}); // it	
+	it('Should return valid record on competition using promises!', function (done) {
+		db.one("SELECT * FROM competition WHERE id_competition = ($1);", [id_competition])
+		.then(function(data){
+			done();
+		}, function(err) {
+			console.log("error", err);
+		}); //db
+	});	
+	it('Should return 400(BAD REQUEST) to POST request with wrong start',function(done){
+		obj.starts = "asd";
+		form = setFormParameters(obj);
+		request = returnHttpRequest(form);
+		form.pipe(request);
+		
+		request.on('response', function(res) {
+			expect(res.statusCode).to.equal(400);
+			done();
+		}); //request
+	}); // it
+	it('Should return 400(BAD REQUEST) to POST request with negative time interval',function(done){
+		obj.ends = "2015-02-01 10:23";
+		form = setFormParameters(obj);
+		request = returnHttpRequest(form);
+		form.pipe(request);
+		
+		request.on('response', function(res) {
+			expect(res.statusCode).to.equal(400);
+			done();
+		}); //request
+	}); // it
+	it('Should return 400(BAD REQUEST) to POST request without title',function(done){
+		obj.title = undefined;
+		form = setFormParameters(obj);
+		request = returnHttpRequest(form);
+		form.pipe(request);
+		
+		request.on('response', function(res) {
+			expect(res.statusCode).to.equal(400);
+			done();
+		}); //request
+	}); // it
+	it('Should return 400(BAD REQUEST) to POST request without description',function(done){
+		obj.description = undefined;
+		form = setFormParameters(obj);
+		request = returnHttpRequest(form);
+		form.pipe(request);
+		
+		request.on('response', function(res) {
+			expect(res.statusCode).to.equal(400);
+			done();
+		}); //request
+	}); // it
+	it('Should return 400(BAD REQUEST) to POST request without id_company',function(done){
+		obj.id_company = undefined;
+		form = setFormParameters(obj);
+		request = returnHttpRequest(form);
+		form.pipe(request);
+		
+		request.on('response', function(res) {
+			expect(res.statusCode).to.equal(400);
+			done();
+		}); //request
+	}); // it
+	it('Should return 400(BAD REQUEST) to POST request without file',function(done){
+		obj.image = undefined;
+		form = setFormParameters(obj);
+		request = returnHttpRequest(form);
+		form.pipe(request);
+		
+		request.on('response', function(res) {
+			expect(res.statusCode).to.equal(400);
+			done();
+		}); //request
+	}); // it
+	it('Should return 200 to PUT with correct parameters',function(done){
+		obj.title += "8";
+		form = setFormParameters(obj);
+		request = returnHttpRequest(form);
+		request.method = 'PUT';
+		request.path = '/api/v1/competitions/'+id_competition;
+		form.pipe(request);
+		
+		request.on('response', function(res) {
+			expect(res.statusCode).to.equal(200);
+			done();
+		}); //request
+	}); // it
+	it('Should return 200 to PUT without logo',function(done){
+		obj.logo = undefined;
+		form = setFormParameters(obj);
+		request = returnHttpRequest(form);
+		request.method = 'PUT';
+		request.path = '/api/v1/competitions/'+id_competition;
+		form.pipe(request);
+		
+		request.on('response', function(res) {
+			expect(res.statusCode).to.equal(200);
+			done();
+		}); //request
+	}); // it
+	it('Should return 204 to DELETE',function(done){
+		form = setFormParameters(obj);
+		request = returnHttpRequest(form);
+		request.method = 'DELETE';
+		request.path = '/api/v1/competitions/'+id_competition;
+		form.pipe(request);
+		
+		request.on('response', function(res) {
+			expect(res.statusCode).to.equal(204);
+			done();
+		}); //request
+	}); // it
+	it('Shouldn\'t find previously deleted company',function(done){
+		db.none("SELECT * FROM competition WHERE id_competition = ($1);", [id_competition])
+		.then(function(data){
+			done();
+		}); //db
+	}); // it
 });

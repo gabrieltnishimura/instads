@@ -25,7 +25,7 @@ var log = bunyan.createLogger({
 });
 exports.log = log;
 exports.is_data_valid = function(types, variables) {
-	log.info(types); log.info(variables);
+	//log.info(types); log.info(variables);
 	if (types.length != variables) {
 		for (var i in variables) {
 			if (variables[i] !== undefined) {
@@ -72,11 +72,12 @@ exports.is_data_valid = function(types, variables) {
 exports.compare_timestamps = function(timestamp_before, timestamp_after) {
 	var before = moment(timestamp_before, "YYYY-MM-DD HH:mm");
 	var after = moment(timestamp_after, "YYYY-MM-DD HH:mm");
+	console.log(after.diff(before));
 	return after.diff(before);
 }
 isValidUUID = function (uuid) {
 	var uuid_regex = new RegExp("[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}");
-	if (uuid_regex.test(uuid.split('.')[0])){
+	if (uuid_regex.test(uuid.split('.')[0])){ // ignores extension
 		return true;
 	}
 	return false;

@@ -21,12 +21,22 @@ function returnHttpRequest(form) {
 
 function setFormParameters(params) {
 	var form = new FormData();
-	if (params.name !== undefined) form.append('name', params.name);
-	if (params.cnpj !== undefined) form.append('cnpj', params.cnpj);
-	if (params.logo !== undefined) form.append('logo', fs.createReadStream(params.logo));
+	if (params.title !== undefined) form.append('title', params.title);
+	if (params.description !== undefined) form.append('description', params.description);
+	if (params.op !== undefined) form.append('op', params.op);
+	if (params.id_creator !== undefined) form.append('id_creator', params.id_creator); // ?
+	if (params.id_competition !== undefined) form.append('id_competition', params.id_competition);
+	if (params.file_path !== undefined) form.append('file_path', fs.createReadStream(params.file_path));
 	return form;
 }
-
+ *		id_post : [int],
+ *		title : [string], 
+ *		description : [string]
+ *		votes : [int], 
+ *		id_creator : [int],
+ *		mimetype : [string], 
+ *		file_path : [string],
+ * 		id_competition : [int]
 describe('Company API', function(){
 	var request, id_company, form, obj;
 	beforeEach(function(done){
