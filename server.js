@@ -40,3 +40,4 @@ require("./modules/dao_post");
 require("./modules/dao_user");
 require("./modules/dao_company");
 require("./modules/dao_competition");
+require("./modules/view");

@@ -48,6 +48,8 @@ var uuid 		= common.uuid;
 // File upload related imports
 var fs 			= common.fs;
 var multer  	= common.multer;
+// Path
+var path		= common.path;
 // ---- [end of imports] ----
 
 // Creating upload middleware for Competition Routes

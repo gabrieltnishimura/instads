@@ -1,41 +1,52 @@
-var instads_posts = angular.module('instads_posts', []);
+var instads_posts = angular.module('instads_posts', ['infinite-scroll']);
 
-function mainController($scope, $http) {
-    $scope.formData = {};
+instads_posts.controller('PostsController', function($scope, Instads) {
+  $scope.instads = new Instads();
+});
 
-    // when landing on the page, get all todos and show them
-    $http.get('/api/v1/posts')
-        .success(function(data) {
-            $scope.todos = data;
-            console.log(data);
-        })
-        .error(function(data) {
-            console.log('Error: ' + data);
-        });
+// Instads constructor function to encapsulate HTTP and pagination logic
+instads_posts.factory('Instads', function($http) {
+	var Instads = function() {
+		this.posts;
+		this.busy = false;
+		this.after = 0;
+		this.zerocount = 0;
+		this.timeout = 5000;
+	};
 
-    // when submitting the add form, send the text to the node API
-    $scope.createPost = function() {
-        $http.post('/api/v1/posts', $scope.formData)
-            .success(function(data) {
-                $scope.formData = {}; // clear the form so our user is ready to enter another
-                $scope.posts = data;
-                console.log(data);
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-    };
+	Instads.prototype.nextPage = function() {
+		if (this.busy) return;
+		if (this.zerocount > 4) return;
+		this.busy = true;
 
-    // delete a todo after checking it
-    $scope.deletePost = function(id) {
-        $http.delete('/api/v1/posts/' + id)
-            .success(function(data) {
-                $scope.posts = data;
-                console.log(data);
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-    };
+		$http.get('/api/v1/posts?offset=' + this.after)
+		.success(function(data) {
+			if (this.zerocount < 4) {
+				if (data.length != 0) {
+					if (this.posts === undefined) {
+						this.posts = data;
+					} else {
+						this.posts.concat(data);
+					}
+					this.after += data.length;
+				} else {
+					this.zerocount++;
+				}
+			} else {
+				console.log("wait for " + this.timeout);
+				setTimeout(this.undoZeroCount, this.timeout);
+			}
+			this.busy = false;
+		}.bind(this))
+		.error(function(data) {
+			console.log('Error: ' + data);
+		});
+	};
 
-}
+	Instads.prototype.undoZeroCount = function() {
+		console.log("able to do it again");
+		this.zerocount = 0;
+	};
+	
+	return Instads;
+});

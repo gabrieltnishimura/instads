@@ -152,7 +152,7 @@ app.post('/api/v1/votes/:id_post', isLoggedIn, function(req, res) {
 
 // accept GET request at /api/v1/posts
 app.get('/api/v1/posts', function (req, res) {
-	var q = "SELECT p.id_post, p.title, p.description, p.id_creator, p.id_competition, p.mimetype, " +
+	var q = "SELECT p.id_post, p.title, p.description, p.id_creator, p.id_competition, p.file_path, p.mimetype, " +
 			" u.name FROM post p, instads_user u WHERE u.id_user = p.id_creator ";
 	var q_params = new Array();
 	
@@ -254,11 +254,10 @@ app.get('/api/v1/posts/:id_post', function (req, res) {
 		res.json(data);
 	}, function(reason){
 		if (reason.indexOf('No data returned') != -1) {
-			res.status(404).end("Resource not found");
-		} else {
-			log.error(reason);
-			sendStatus500Error(res);
+			res.status(404).end("Resource not found"); return;
 		}
+		log.error(reason);
+		sendStatus500Error(res);
 	});
 });
 
@@ -282,9 +281,6 @@ app.delete('/api/v1/posts/:id_post', isLoggedIn, function (req, res) {
 				sendStatus500Error(res);
 			});
 		}, function(reason){
-			if (reason.indexOf('No data returned from the query.') != -1) {
-				res.status(404).end("Resource not found");
-			}
 			log.error(reason);
 			sendStatus500Error(res);
 		});
@@ -333,13 +329,6 @@ app.put('/api/v1/posts/:id_post', upload.single('post_file'), function (req, res
 function sendStatus500Error(res) {
 	res.writeHead(500, {'content-type': 'text/plain'});
 	res.end('Server internal error. ');
-}
-
-function verifyParams(types, vars, res) {
-	var v = common.is_data_valid(types, vars);
-	if (!v.success) { // verify errors in provided parameters
-		res.status(400).end(v.error); return;
-	}
 }
 
 // route middleware to make sure a user is logged in

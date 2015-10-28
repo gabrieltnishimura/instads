@@ -21,11 +21,12 @@
     <!-- SPELLS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
-    <script src="/js/core.js"></script>
+	<script src="/js/ng-infinite-scroll.min.js"></script><!-- load angular -->
+    <script src="/js/controller.js"></script>
 
 </head>
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
-<body ng-controller="mainController">
+<body ng-app='instads_posts' ng-controller="PostsController">
     <div class="container">
 
         <!-- HEADER AND TODO COUNT -->
@@ -35,15 +36,14 @@
 
         <!-- TODO LIST -->
         <div id="todo-list" class="row">
-            <div class="col-sm-4 col-sm-offset-4">
+            <div class="col-sm-12" infinite-scroll='instads.nextPage()' infinite-scroll-disabled='instads.busy' infinite-scroll-distance='1'>
 
                 <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div class="checkbox" ng-repeat="post in posts">
-                    <label>
-                        <input type="checkbox" ng-click="deletePost(todo._id)"> {{ post.title }}
-                    </label>
+                <div class="checkbox" ng-repeat="post in instads.posts">
+					#{{post.id_post}} Post Title: {{ post.title }}
+					<img src="/api/v1/file/post/{{post.file_path}}">
                 </div>
-
+				<div ng-show='instads.busy'>Loading data...</div>
             </div>
         </div>
 

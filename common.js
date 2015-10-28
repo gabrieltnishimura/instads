@@ -19,7 +19,7 @@ var bodyParser 	= require('body-parser'); 					// (16) Parsers
 var cParser 	= require('cookie-parser');					// (17) 
 var config		= require('C:/Users/U/Desktop/config.js');	// (18) Contains sensitive information
 var pgp 		= require('pg-promise')();					// (19) 
-var db 			= pgp('postgres://postgres:dom1nion!@127.0.0.1:5432/instads');// (20) Database connection pool
+var db			= pgp(config.DATABASE_URL);					// (20) Database connection pool
 var bcrypt   	= require('bcrypt-nodejs');					// (21) Encryption
 
 // Exporting modules
@@ -59,14 +59,15 @@ var log = bunyan.createLogger({
 			level: 'info',
 			stream: process.stdout            // log INFO and above to stdout
 		},
-		{
+		//for now dont log into files
+		/*{
 			level: 'error',
 			path: 'instads_error.log'  // log ERROR and above to a file
 		},
 		{
 			leve: 'info',
 			path: 'instads_info.log'
-		}
+		}*/ 
 	]
 });
 exports.log = log;
