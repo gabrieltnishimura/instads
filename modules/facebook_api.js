@@ -1,7 +1,7 @@
-var https = require('https');
-var cfg = require('C:/Users/U/Desktop/config.js');
-var common = require('./common');
-var log = common.log;
+var common 	= require('../common');
+var cfg 	= common.config;
+var https 	= common.https;
+var log	 	= common.log;
 
 exports.getUserToken = function(userTOK) {
 	var debug_user_token = {

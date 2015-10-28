@@ -40,33 +40,27 @@ INSERT INTO post (file_path, title, mimetype, description, votes, id_creator) VA
 // ---- [start of imports] ----
 // Main Imports - Express and App
 var app 		= require('../server');
-// Database related imports
-var pgp 		= require('./pgp');
-var db 			= pgp.db;
-// Logging related imports
-var common 		= require('./common');
-var log 		= common.log;
+// Common modules
+var common 		= require('../common');
 // Config related imports
-var cfg 		= require('./config');
+var cfg 		= common.config;
+// Logging related imports
+var log			= common.log;
+// Database related imports
+var db 			= common.db;
 // Uniqueness related imports
-var uuid 		= require('node-uuid');
+var uuid 		= common.uuid;
 // File upload related imports
-var fs 			= require('fs');
-var multer  	= require('multer');
+var fs 			= common.fs;
+var multer  	= common.multer;
+// ---- [end of imports] ----
+
+// Creating upload middleware for Post Routes
 var upload 		= multer({
-	fileFilter: function (req, file, cb) {
-		if(file) {
-			if (file.mimetype.indexOf('image') != -1) { // valid image file
-				cb(null, true);
-			} else { // invalid file
-				log.error("Wrong filetype provided");
-				cb(null, false);
-			}
-		}
-	}, 
+	fileFilter: common.fileFilterImagesAndVideos, 
 	storage: multer.diskStorage({
 		destination: function (req, file, cb) {
-			cb(null, 'uploads/posts/');
+			cb(null, cfg.DEFAULT_UPLOAD_DIR_POST);
 		},
 		filename: function (req, file, cb) {
 			if(file) {
@@ -76,7 +70,6 @@ var upload 		= multer({
 	}),
 	limits: { fileSize: cfg.DEFAULT_MAXIMUM_UPLOAD_LIMIT_POST * 1024 * 1024 }
 });
-// ---- [end of imports] ----
 
 /** Demo upload page! */
 app.get('/send_upload', function (req, res) {
@@ -91,28 +84,33 @@ app.get('/send_upload', function (req, res) {
 });
 
 /** POST ROUTE -- MUST PROVIDE ALL PARAMETERS IN ORDER TO WORK **/
-app.post('/api/v1/posts', isLoggedIn, upload.single('post_file'), function(req, res) {
-	var q_params = [
-		req.body.title, 										  // post title
-		req.body.description, 									  // post description
-		(req.file !== undefined) ? req.file.filename : undefined, // filename in uuid format
-		(req.file !== undefined) ? req.file.mimetype : undefined, // file type in mimetype
-		req.body.id_competition,								  // id_competition
-		req.user.id];											  // id_creator
+app.post('/api/v1/posts', upload.single('post_file'), function(req, res) {
+	isLoggedIn(req, res, function() {
+		var q_params = [
+			req.body.title, 										  // post title
+			req.body.description, 									  // post description
+			(req.file !== undefined) ? req.file.filename : undefined, // filename in uuid format
+			(req.file !== undefined) ? req.file.mimetype : undefined, // file type in mimetype
+			req.body.id_competition,								  // id_competition
+			req.user.id];											  // id_creator
 
-	verifyParams(['string', 'string', 'uuid', 'mimetype', 'int', 'int'], q_params, res);
-
-	// query posgres for one result
-	db.one(	"INSERT INTO post (title, description, file_path, mimetype, time_posted, id_competition, id_creator) "+
-			"VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6) RETURNING id_post", q_params)
-	.then(function(data){
-		log.info("Created post with id: " + data.id_post);
-		res.set({'ETag': data.id_post});
-		res.status(201).end();
-	}, function(reason){
-		log.error(reason);
-		sendStatus500Error(res);
-	});	
+		var v = common.is_data_valid(['string', 'string', 'uuid', 'mimetype', 'int', 'int'], q_params);
+		if (!v.success) { // verify errors in provided parameters
+			res.status(400).end(v.error); return;
+		}
+		
+		// query posgres for one result
+		db.one(	"INSERT INTO post (title, description, file_path, mimetype, time_posted, id_competition, id_creator) "+
+				"VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6) RETURNING id_post", q_params)
+		.then(function(data){
+			log.info("Created post with id: " + data.id_post);
+			res.set({'ETag': data.id_post});
+			res.status(201).end();
+		}, function(reason){
+			log.error(reason);
+			sendStatus500Error(res);
+		});	
+	}); // isLoggedIn
 });
 
 /** VOTATION ROUTE -- MUST PROVIDE ALL PARAMETERS IN ORDER TO WORK **/
@@ -154,7 +152,8 @@ app.post('/api/v1/votes/:id_post', isLoggedIn, function(req, res) {
 
 // accept GET request at /api/v1/posts
 app.get('/api/v1/posts', function (req, res) {
-	var q = "SELECT * FROM post";
+	var q = "SELECT p.id_post, p.title, p.description, p.id_creator, p.id_competition, p.mimetype, " +
+			" u.name FROM post p, instads_user u WHERE u.id_user = p.id_creator ";
 	var q_params = new Array();
 	
 	// Get parameters from URL
@@ -167,37 +166,37 @@ app.get('/api/v1/posts', function (req, res) {
 	offset = req.query.offset;
 	
 	if (title !== undefined || id_creator !== undefined || id_competition !== undefined || mimetype !== undefined) {
-		q += " WHERE "
+		q += " AND "
 		// [optional] title
 		if (title !== undefined) {
 			q_params.push("%" + title + "%");
-			q += " title ILIKE ($" + q_params.length + ") ";
+			q += " p.title ILIKE ($" + q_params.length + ") ";
 		}
 		// [optional] id_creator
 		if (id_creator !== undefined) {
 			if (isNaN(id_creator)) {
-				res.status(400).end("Creator provided is not a integer number. Please refer to documentation or provide a integer.");
+				res.status(400).end("Creator provided is not a integer number. Please refer to documentation or provide a integer."); return;
 			} else {
 				q_params.push(id_creator);
 				q += title !== undefined ? " AND" : "";
-				q += " id_creator = ($" + q_params.length + ") ";
+				q += " p.id_creator = ($" + q_params.length + ") ";
 			}
 		}
 		// [optional] id_competition
 		if (id_competition !== undefined) {
 			if (isNaN(id_competition)) {
-				res.status(400).end("Creator provided is not a integer number. Please refer to documentation or provide a integer.");
+				res.status(400).end("Creator provided is not a integer number. Please refer to documentation or provide a integer."); return;
 			} else {
 				q_params.push(id_competition);
 				q += (title !== undefined || id_creator !== undefined) ? " AND" : "";
-				q += " id_competition = ($" + q_params.length + ") ";
+				q += " p.id_competition = ($" + q_params.length + ") ";
 			}
 		}
 		// [optional] mimetype
 		if (mimetype !== undefined) {
 			q_params.push(mimetype);
 			query += (title !== undefined || id_creator !== undefined || id_competition !== undefined) ? " AND" : "";
-			query += " mimetype ILIKE ($" + q_params.length + ") ";
+			query += " p.mimetype ILIKE ($" + q_params.length + ") ";
 		}
 	}
 	
@@ -205,9 +204,9 @@ app.get('/api/v1/posts', function (req, res) {
 	if (order !== undefined) {
 		if (order == "ASC" || order == "DESC") {
 			q_params.push(order);
-			q += " ORDER BY title $" + q_params.length + " ";
+			q += " ORDER BY p.title $" + q_params.length + " ";
 		} else {
-			res.status(400).end("Order provided is not ASC neither DESC. Please refer to documentation or provide right parameters");
+			res.status(400).end("Order provided is not ASC neither DESC. Please refer to documentation or provide right parameters"); return;
 		}
 	}
 	
@@ -247,7 +246,7 @@ app.get('/api/v1/posts/:id_post', function (req, res) {
 	var q = "SELECT title, description, id_creator, mimetype, file_path, time_posted, votes FROM post WHERE id_post = ($1)";
 	
 	if (id_post === undefined || isNaN(id_post)) {
-		res.status(400).end("[BAD REQUEST] Invalid parameters provided.");
+		res.status(400).end("[BAD REQUEST] Invalid parameters provided."); return;
 	}
 	
 	db.one(q, [id_post])
@@ -265,57 +264,69 @@ app.get('/api/v1/posts/:id_post', function (req, res) {
 
 // accept DELETE request at /api/v1/posts/:id_post
 app.delete('/api/v1/posts/:id_post', isLoggedIn, function (req, res) {
-	// Validade parameters from URL
-	var id_post = req.params.id_post;
-	var q = "DELETE FROM post WHERE id_post = ($1);";
+	isLoggedIn(req, res, function() {
+		// Validade parameters from URL
+		var id_post = req.params.id_post;
+		var q = "DELETE FROM post WHERE id_post = ($1);";
 
-	if (id_post === undefined || isNaN(id_post)) {
-		res.status(400).end("[BAD REQUEST] Invalid parameters provided.");
-	}
-	
-	db.none(q, [id_post])
-	.then(function(data){
-		res.status(204).json({success : true});
-	}, function(reason){
-		if (reason.indexOf('No data returned from the query.') != -1) {
-			res.status(404).end("Resource not found");
+		if (id_post === undefined || isNaN(id_post)) {
+			res.status(400).end("[BAD REQUEST] Invalid parameters provided."); return;
 		}
-		log.error(reason);
-		sendStatus500Error(res);
+		
+		db.none(q, [id_post])
+		.then(function(data){ // also delete data from user_votes
+			db.none("DELETE FROM user_votes WHERE id_post = ($1)", [id_post])
+			.then(function(data){
+				res.status(204).json({success : true});
+			}, function(reason){
+				sendStatus500Error(res);
+			});
+		}, function(reason){
+			if (reason.indexOf('No data returned from the query.') != -1) {
+				res.status(404).end("Resource not found");
+			}
+			log.error(reason);
+			sendStatus500Error(res);
+		});
 	});
 });
 
 // accept PUT request at /api/v1/posts/:id_post
-app.put('/api/v1/posts/:id_post', isLoggedIn, upload.single('post_file'), function (req, res) {
-	// Validade parameters from request/url
-	var q_params = [
-		req.body.title, 										 	// post title
-		req.body.description, 										// post description
-		(req.file !== undefined) ? req.file.filename : undefined, 	// filename in uuid format
-		(req.file !== undefined) ? req.file.mimetype : undefined, 	// file type in mimetype
-		req.user.id,												// id_creator @todo
-		req.params.id_post];										// id_post			  
+app.put('/api/v1/posts/:id_post', upload.single('post_file'), function (req, res) {
+	isLoggedIn(req, res, function() {
+		// Validade parameters from request/url
+		var q_params = [
+			req.body.title, 										 	// post title
+			req.body.description, 										// post description
+			(req.file !== undefined) ? req.file.filename : undefined, 	// filename in uuid format
+			(req.file !== undefined) ? req.file.mimetype : undefined, 	// file type in mimetype
+			req.user.id,												// id_creator @todo
+			req.params.id_post];										// id_post			  
 
-	verifyParams(['string', 'string', 'uuid_optional', 'mimetype_optional', 'int', 'int'], q_params, res);
-	
-	var q = "UPDATE post post_new SET (title, description, file_path, mimetype, id_creator) = "+
-			"($1, $2, $3, $4, $5) FROM post post_old WHERE post_new.id_post = post_old.id_post AND post_new.id_post = ($6) " + 
-			"RETURNING post_old.file_path";
-	
-	if (req.file === undefined) {
-		q = "UPDATE post post_new SET (title, description, id_creator) = "+
-			"($1, $2, $3)WHERE id_post = ($4);";
-		q_params.splice(q_params.indexOf(undefined),1); // remove undefined
-		q_params.splice(q_params.indexOf(undefined),1); // remove undefined
-	}
-	
-	db.oneOrNone(q, q_params) // query oneOrNone
-	.then(function(data){
-		if (req.file_path !== undefined) // if file uploaded, delete old file
-			fs.unlink('./uploads/posts/'+data.file_path);
+		var v = common.is_data_valid(['string', 'string', 'uuid_optional', 'mimetype_optional', 'int', 'int'], q_params);
+		if (!v.success) { // verify errors in provided parameters
+			res.status(400).end(v.error); return;
+		}
 		
-		log.info("Updated post!");
-		res.status(200).json({success : true});
+		var q = "UPDATE post post_new SET (title, description, file_path, mimetype, id_creator) = "+
+				"($1, $2, $3, $4, $5) FROM post post_old WHERE post_new.id_post = post_old.id_post AND post_new.id_post = ($6) " + 
+				"RETURNING post_old.file_path";
+		
+		if (req.file === undefined) {
+			q = "UPDATE post post_new SET (title, description, id_creator) = "+
+				"($1, $2, $3)WHERE id_post = ($4);";
+			q_params.splice(q_params.indexOf(undefined),1); // remove undefined
+			q_params.splice(q_params.indexOf(undefined),1); // remove undefined
+		}
+		
+		db.oneOrNone(q, q_params) // query oneOrNone
+		.then(function(data){
+			if (req.file_path !== undefined) // if file uploaded, delete old file
+				fs.unlink('./uploads/posts/'+data.file_path);
+			
+			log.info("Updated post!");
+			res.status(200).json({success : true});
+		});
 	});
 });
 
@@ -327,7 +338,7 @@ function sendStatus500Error(res) {
 function verifyParams(types, vars, res) {
 	var v = common.is_data_valid(types, vars);
 	if (!v.success) { // verify errors in provided parameters
-		res.status(400).end(v.error);
+		res.status(400).end(v.error); return;
 	}
 }
 
@@ -337,10 +348,11 @@ function isLoggedIn(req, res, next) {
 	var token = cfg.app_secret;
 	if (req.body.access_token !== undefined && req.body.access_token == token ||
 		req.query.access_token !== undefined && req.query.access_token == token) {
-		db.one("SELECT id_user FROM instads_user LIMIT 1", [])
+		log.info("[Auth with token]");
+		db.one("SELECT id_user, email FROM instads_user LIMIT 1", [])
 		.then(function(data){
-			req.user.id = data.id_user;
-//			req.login({id : data.id_user, email : data.email}, function(err) {});
+			req.user = {id : data.id_user};
+			//req.login({id : data.id_user, email : data.email}, function(err) {});
 			return next();
 		});
 	} else {

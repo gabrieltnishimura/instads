@@ -1,11 +1,11 @@
 {
   "name": "instads",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Instads web application",
   "main": "server.js",
   "scripts": {
     "start": "supervisor -i uploads,tdd,view server.js | bunyan",
-    "test": "test"
+    "test": "mocha tdd"
   },
   "repository": {
     "type": "git",

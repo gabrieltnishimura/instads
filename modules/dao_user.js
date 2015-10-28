@@ -53,36 +53,29 @@ CREATE TABLE user_likes (id_user INTEGER REFERENCES instads_user(id_user),
 // ---- [start of imports] ----
 // Main Imports - Express and App
 var app 		= require('../server');
-// Database related imports
-var pgp 		= require('./pgp');
-var db 			= pgp.db;
-// Logging related imports
-var common 		= require('./common');
-var log 		= common.log;
+// Common modules
+var common 		= require('../common');
 // Config related imports
-var cfg 		= require('./config');
-// Passport related stuff
-var passport	= require('passport');
+var cfg 		= common.config;
+// Logging related imports
+var log			= common.log;
+// Database related imports
+var db 			= common.db;
 // Uniqueness related imports
-var uuid 		= require('node-uuid');
+var uuid 		= common.uuid;
 // File upload related imports
-var fs 			= require('fs');
-var multer  	= require('multer');
+var fs 			= common.fs;
+var multer  	= common.multer;
+// Passport related stuff
+var passport	= common.passport;
+// ---- [end of imports] ----
 
+// Creating upload middleware for User Routes
 var upload 	= multer({
-	fileFilter: function (req, file, cb) {
-		if(file) {
-			if (file.mimetype.indexOf('image') != -1) { // valid image file
-				cb(null, true);
-			} else { // invalid file
-				log.error("Wrong filetype provided");
-				cb(null, false);
-			}
-		}
-	}, 
+	fileFilter: common.fileFilterImages, 
 	storage: multer.diskStorage({
 		destination: function (req, file, cb) {
-			cb(null, 'uploads/users/');
+			cb(null, cfg.DEFAULT_UPLOAD_DIR_USER);
 		},
 		filename: function (req, file, cb) {
 			if(file) {
@@ -91,12 +84,6 @@ var upload 	= multer({
 		}
 	}),
 	limits: { fileSize: cfg.DEFAULT_MAXIMUM_UPLOAD_LIMIT_USER * 1024 * 1024 }
-});
-// ---- [end of imports] ----
-
-app.get('/logout', isLoggedIn, function(req, res) {
-	req.logout();
-	res.redirect('/');
 });
 
 // =====================================
@@ -143,14 +130,17 @@ app.get	('/oi', isLoggedIn, function(req, res, next) {
 	res.status(200).end("I HAVE SOME KIND OF PERMISSION! yeye");
 }); 
 
-app.put('/users', isLoggedIn, upload.single('avatar'), function(req, res){
+app.put('/users', upload.single('avatar'), function(req, res){
 	var q_params = [
 		req.body.name,												// user name
 		req.body.email, 											// user email
 		(req.file !== undefined) ? req.file.mimetype : undefined, 	// file mimetype
 		(req.file !== undefined) ? req.file.filename : undefined];	// filepath 
 	
-	verifyParams(['string', 'string', 'mimetype_optional', 'uuid_optional'], q_params, res);
+	var v = common.is_data_valid(['string', 'string', 'mimetype_optional', 'uuid_optional'], q_params, vars);
+	if (!v.success) { // verify errors in provided parameters
+		res.status(400).end(v.error); return;
+	}
 	
 	var q = "UPDATE instads_user user_new SET (name, email, mimetype, avatar) = "+
 			"($1, $2, $3, $4, $5) FROM instads_user user_old WHERE user_new.id_user = user_old.id_user AND user_new.id_user = ($8) " + 
@@ -171,16 +161,17 @@ app.put('/users', isLoggedIn, upload.single('avatar'), function(req, res){
 	});
 });
 
+// =====================================
+// LOGOUT ROUTES =======================
+// =====================================
+app.get('/logout', isLoggedIn, function(req, res) {
+	req.logout();
+	res.redirect('/');
+});
+
 function sendStatus500Error(res) {
 	res.writeHead(500, {'content-type': 'text/plain'});
 	res.end('Server internal error. ');
-}
-
-function verifyParams(types, vars, res) {
-	var v = common.is_data_valid(types, vars);
-	if (!v.success) { // verify errors in provided parameters
-		res.status(400).end(v.error);
-	}
 }
 
 // route middleware to make sure a user is logged in

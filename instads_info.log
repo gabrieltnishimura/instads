@@ -218,3 +218,526 @@
 {"name":"instads","hostname":"AOFF4","pid":6116,"level":30,"msg":"Created competition with id: 57","time":"2015-10-26T18:29:14.969Z","v":0}
 {"name":"instads","hostname":"AOFF4","pid":6116,"level":30,"msg":"Updated competition!","time":"2015-10-26T18:29:15.040Z","v":0}
 {"name":"instads","hostname":"AOFF4","pid":6116,"level":30,"msg":"Updated competition!","time":"2015-10-26T18:29:15.054Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5256,"level":30,"id":10,"email":"asd@asd.com","msg":"","time":"2015-10-27T12:44:42.151Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4808,"level":30,"msg":"SELECT t.title, t.image, c.name, c.id_company FROM competition t, company c WHERE c.id_company = t.id_company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-27T12:46:51.617Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4808,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-27T12:46:51.620Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3700,"level":30,"msg":"SELECT t.title, t.image, c.name, c.id_company FROM competition t, company c WHERE c.id_company = t.id_company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-27T12:48:52.885Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3700,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-27T12:48:52.892Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3700,"level":30,"msg":"SELECT t.title, t.image, c.name, c.id_company FROM competition t, company c WHERE c.id_company = t.id_company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-27T12:48:56.009Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3700,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-27T12:48:56.010Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5132,"level":30,"msg":"SELECT t.id_competition, t.title, t.image, c.name, c.id_company FROM competition t, company c WHERE c.id_company = t.id_company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-27T12:49:30.207Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5132,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-27T12:49:30.212Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5132,"level":30,"msg":"SELECT t.id_competition, t.title, t.image, c.name, c.id_company FROM competition t, company c WHERE c.id_company = t.id_company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-27T12:49:36.418Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5132,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-27T12:49:36.419Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6404,"level":30,"msg":"SELECT t.id_competition, t.title, t.image, c.name, c.id_company FROM competition t, company c WHERE c.id_company = t.id_company LIMIT ($1)  OFFSET ($2) ","time":"2015-10-27T12:50:24.412Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6404,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-27T12:50:24.423Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":30,"msg":"Created competition with id: 62","time":"2015-10-27T14:08:27.605Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":30,"msg":"Created competition with id: 63","time":"2015-10-27T14:08:27.733Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":30,"msg":"Updated competition!","time":"2015-10-27T14:08:27.801Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":30,"msg":"Updated competition!","time":"2015-10-27T14:08:27.817Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":30,"msg":"Created company with id: 109","time":"2015-10-27T14:09:43.762Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":30,"msg":"Created company with id: 110","time":"2015-10-27T14:09:43.825Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":50,"err":{"message":"null value in column \"name\" violates not-null constraint","name":"error","stack":"error: null value in column \"name\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"name\" violates not-null constraint","time":"2015-10-27T14:09:43.840Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":50,"err":{"message":"null value in column \"cnpj\" violates not-null constraint","name":"error","stack":"error: null value in column \"cnpj\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"cnpj\" violates not-null constraint","time":"2015-10-27T14:09:43.840Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":50,"err":{"message":"null value in column \"logo\" violates not-null constraint","name":"error","stack":"error: null value in column \"logo\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"logo\" violates not-null constraint","time":"2015-10-27T14:09:43.856Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":30,"msg":"Updated company! ","time":"2015-10-27T14:09:43.871Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4540,"level":30,"msg":"Updated company! ","time":"2015-10-27T14:09:43.871Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3060,"level":30,"msg":"SELECT p.id_post, p.title, p.description, p.id_creator, p.id_competition, p.mimetype,  u.name FROM post p, instads_user u WHERE u.id_user = p.id_creator  LIMIT ($1)  OFFSET ($2) ","time":"2015-10-27T20:07:41.578Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3060,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-27T20:07:41.582Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5532,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:41:36.299Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5532,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'f8bbef8d-78f6-4e79-8001-d003490edaa4.jpeg',\n  'image/jpeg',\n  '98',\n  10 ]","time":"2015-10-27T20:41:36.299Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5532,"level":50,"err":{"message":"insert or update on table \"post\" violates foreign key constraint \"post_id_competition_fkey\"","name":"error","stack":"error: insert or update on table \"post\" violates foreign key constraint \"post_id_competition_fkey\"\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23503"},"msg":"insert or update on table \"post\" violates foreign key constraint \"post_id_competition_fkey\"","time":"2015-10-27T20:41:36.331Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5532,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:42:10.889Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5532,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'a6ecb872-2478-4ac8-820c-1b39d86abd22.jpeg',\n  'image/jpeg',\n  '98',\n  10 ]","time":"2015-10-27T20:42:10.889Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5532,"level":50,"err":{"message":"insert or update on table \"post\" violates foreign key constraint \"post_id_competition_fkey\"","name":"error","stack":"error: insert or update on table \"post\" violates foreign key constraint \"post_id_competition_fkey\"\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23503"},"msg":"insert or update on table \"post\" violates foreign key constraint \"post_id_competition_fkey\"","time":"2015-10-27T20:42:10.889Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5532,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:43:02.528Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5532,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '8259ecaa-9712-4602-adc2-bab83119bc3c.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:43:02.528Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5532,"level":30,"msg":"Created post with id: 3","time":"2015-10-27T20:43:02.543Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2440,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:44:04.676Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2440,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'd30a43ee-8562-46df-a83e-80f37b6a94de.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:44:04.676Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2440,"level":30,"msg":"Created post with id: 4","time":"2015-10-27T20:44:04.691Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2440,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:45:01.280Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2440,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'cbff955e-5356-429f-96a8-6194f89b7e73.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:45:01.280Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2440,"level":30,"msg":"Created post with id: 5","time":"2015-10-27T20:45:01.296Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3676,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:45:59.732Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3676,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '24ef3c3b-b16b-49de-bf42-e9f2d7f25f53.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:45:59.732Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3676,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:46:11.012Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3676,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'b1afa60f-9528-4434-b9d8-861145d6f539.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:46:11.012Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3676,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:46:21.268Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3676,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '452c18ea-2c71-4136-8544-5556e4f57365.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:46:21.268Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3676,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:46:27.552Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3676,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'e2402a21-6747-45d7-995d-65d248b6cf40.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:46:27.552Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3580,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:47:02.859Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3580,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '969516c5-0745-47ea-8194-3ae699857109.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:47:02.875Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2136,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:47:42.739Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2136,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '4f745b94-f782-42da-abe8-2cfd4302f30c.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:47:42.739Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2136,"level":30,"msg":"Created post with id: 6","time":"2015-10-27T20:47:42.754Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5056,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:49:07.659Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5056,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '0b5b80d0-fcf3-4cc6-b705-4468b1d1bd9b.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:49:07.659Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5056,"level":30,"msg":"Created post with id: 7","time":"2015-10-27T20:49:07.659Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6704,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:50:46.315Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6704,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'd79eab65-f54c-46a7-97ba-2cb9d86ee8c6.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:50:46.315Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5496,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T20:52:57.811Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5496,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'ae4cc7e1-a49d-4782-8513-df0b7a2ac437.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T20:52:57.811Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5496,"level":30,"msg":"Created post with id: 8","time":"2015-10-27T20:52:57.811Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:51:45.032Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '2622986c-0fbd-4976-aa0e-de1b20f4fccd.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T22:51:45.034Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"Created post with id: 9","time":"2015-10-27T22:51:45.075Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:51:45.167Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '4129f271-5f05-475a-bdbb-1bbd0c1f8abc.jpeg',\n  'image/jpeg',\n  'a',\n  10 ]","time":"2015-10-27T22:51:45.169Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:51:45.189Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ undefined,\n  'PODE!',\n  '8be552f3-8667-4a2d-b257-1dc02838de86.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T22:51:45.189Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:51:45.208Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'bcb93edc-c90d-4ebb-b720-3bdc562e00f7.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-27T22:51:45.209Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:51:45.220Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?', 'PODE!', undefined, undefined, '4', 10 ]","time":"2015-10-27T22:51:45.220Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T22:51:45.238Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?8',\n  'PODE!',\n  '7273965e-e593-48ec-8cba-b51e5962d0f0.jpeg',\n  'image/jpeg',\n  10,\n  '9' ]","time":"2015-10-27T22:51:45.239Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"Updated post!","time":"2015-10-27T22:51:45.247Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T22:51:45.264Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?asdahgahgioadogjdiogjadg',\n  'PODE!',\n  undefined,\n  undefined,\n  10,\n  '9' ]","time":"2015-10-27T22:51:45.264Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"Updated post!","time":"2015-10-27T22:51:45.265Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:52:28.214Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '74cfd261-0e8e-4cb6-8498-316c86384215.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T22:52:28.214Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"Created post with id: 10","time":"2015-10-27T22:52:28.218Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:52:28.301Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '23e5204c-3dcb-497b-862d-af065c6433db.jpeg',\n  'image/jpeg',\n  'a',\n  10 ]","time":"2015-10-27T22:52:28.301Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:52:28.327Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ undefined,\n  'PODE!',\n  '4603c023-53f0-4e18-a343-5a06ac0f7f5d.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T22:52:28.328Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:52:28.339Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'd85351e8-6fec-4612-9298-7ed981533ced.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-27T22:52:28.340Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:52:28.380Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?', 'PODE!', undefined, undefined, '4', 10 ]","time":"2015-10-27T22:52:28.380Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T22:52:28.398Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?8',\n  'PODE!',\n  '1e269d93-69b1-4a9c-91e9-885c8cc08e1d.jpeg',\n  'image/jpeg',\n  10,\n  '10' ]","time":"2015-10-27T22:52:28.398Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"Updated post!","time":"2015-10-27T22:52:28.401Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T22:52:28.426Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"[ 'PODE SER PEPSI?asdahgahgioadogjdiogjadg',\n  'PODE!',\n  undefined,\n  undefined,\n  10,\n  '10' ]","time":"2015-10-27T22:52:28.427Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1052,"level":30,"msg":"Updated post!","time":"2015-10-27T22:52:28.429Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T22:53:27.264Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:53:27.274Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'bcbd8742-fcf0-498e-a302-0b2e8c32f5f1.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T22:53:27.275Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"Created post with id: 11","time":"2015-10-27T22:53:27.281Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T22:53:27.374Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:53:27.376Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'c57cf001-5019-41b7-b2a8-9654c92afd8e.jpeg',\n  'image/jpeg',\n  'a',\n  10 ]","time":"2015-10-27T22:53:27.377Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T22:53:27.399Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:53:27.400Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ undefined,\n  'PODE!',\n  '52fbfbb5-c44c-40fb-a94a-b0401fa6bb30.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T22:53:27.400Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T22:53:27.418Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:53:27.421Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '8cbc2624-2173-4cf9-a532-b9c0dff032aa.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-27T22:53:27.421Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T22:53:27.433Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T22:53:27.434Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?', 'PODE!', undefined, undefined, '4', 10 ]","time":"2015-10-27T22:53:27.435Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T22:53:27.447Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T22:53:27.449Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?8',\n  'PODE!',\n  '2c588102-ec71-4188-89ab-9e5274ab60d9.jpeg',\n  'image/jpeg',\n  10,\n  '11' ]","time":"2015-10-27T22:53:27.449Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"Updated post!","time":"2015-10-27T22:53:27.452Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T22:53:27.466Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T22:53:27.472Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?asdahgahgioadogjdiogjadg',\n  'PODE!',\n  undefined,\n  undefined,\n  10,\n  '11' ]","time":"2015-10-27T22:53:27.473Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"Updated post!","time":"2015-10-27T22:53:27.474Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:16.860Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:02:16.860Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '57f3fabd-661f-4939-9bca-c260c9261aaf.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-27T23:02:16.860Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:18.913Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:02:18.913Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '736aca73-0c6f-482c-b887-6b425c8359d8.jpeg',\n  'image/jpeg',\n  'a',\n  10 ]","time":"2015-10-27T23:02:18.913Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:18.929Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:02:18.944Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ undefined,\n  'PODE!',\n  '6fed835e-a01c-4fa9-9043-f2aa36c6b3ce.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T23:02:18.944Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:18.944Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:02:18.960Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '42d2f1f1-e1cc-4b14-a40e-8a4a17cfeac8.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-27T23:02:18.960Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:18.976Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:02:18.976Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?', 'PODE!', undefined, undefined, '4', 10 ]","time":"2015-10-27T23:02:18.976Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:18.991Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T23:02:18.991Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?8',\n  'PODE!',\n  'd5e80d65-2ec4-4c30-b5da-554267bef7cb.jpeg',\n  'image/jpeg',\n  10,\n  'undefined' ]","time":"2015-10-27T23:02:18.991Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:18.991Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T23:02:18.991Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?asdahgahgioadogjdiogjadg',\n  'PODE!',\n  undefined,\n  undefined,\n  10,\n  'undefined' ]","time":"2015-10-27T23:02:18.991Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:19.007Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:19.007Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:47.618Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:02:47.618Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '56836140-aea9-4b67-b4c2-f02c4b61ae0b.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-27T23:02:47.618Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:49.655Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:02:49.655Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '748521a5-7633-44fd-aec6-6566657a1ce3.jpeg',\n  'image/jpeg',\n  'a',\n  10 ]","time":"2015-10-27T23:02:49.655Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:49.686Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:02:49.686Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ undefined,\n  'PODE!',\n  '8073335a-8ba4-45f2-aaee-36de0bace381.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T23:02:49.686Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:49.702Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:02:49.702Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'dc46ac1e-4931-4459-aa6e-e864c73959e4.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-27T23:02:49.702Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:49.717Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:02:49.717Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?', 'PODE!', undefined, undefined, '4', 10 ]","time":"2015-10-27T23:02:49.717Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:49.733Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T23:02:49.733Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?8',\n  'PODE!',\n  '30e10090-477d-421e-a6d1-dad1416f26d0.jpeg',\n  'image/jpeg',\n  10,\n  'undefined' ]","time":"2015-10-27T23:02:49.733Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:49.748Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T23:02:49.748Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[ 'PODE SER PEPSI?asdahgahgioadogjdiogjadg',\n  'PODE!',\n  undefined,\n  undefined,\n  10,\n  'undefined' ]","time":"2015-10-27T23:02:49.748Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:49.748Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4652,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:02:49.764Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:38:45.167Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:38:45.201Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '9b99f73f-1587-4943-838e-d757ae55e99a.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-27T23:38:45.202Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:38:47.250Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:38:47.251Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '9e54485e-23c5-4e5d-96bb-f4203a8b95fa.jpeg',\n  'image/jpeg',\n  'a',\n  10 ]","time":"2015-10-27T23:38:47.252Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:38:47.268Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:38:47.277Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ undefined,\n  'PODE!',\n  '53241673-95e4-44bc-9aa5-a16a1b0d020b.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T23:38:47.277Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:38:47.299Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:38:47.300Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '7eed3264-1250-43bc-9a7d-daed15378803.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-27T23:38:47.300Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:38:47.310Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:38:47.311Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?', 'PODE!', undefined, undefined, '4', 10 ]","time":"2015-10-27T23:38:47.312Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:38:47.331Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T23:38:47.332Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?8',\n  'PODE!',\n  '53aee0f5-1d4f-48e7-bb25-b4edd4a1f49a.jpeg',\n  'image/jpeg',\n  10,\n  'undefined' ]","time":"2015-10-27T23:38:47.333Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:38:47.356Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T23:38:47.360Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?asdahgahgioadogjdiogjadg',\n  'PODE!',\n  undefined,\n  undefined,\n  10,\n  'undefined' ]","time":"2015-10-27T23:38:47.361Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:38:47.368Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:38:47.370Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:41:00.755Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:41:00.760Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'f4b43d8e-5dd3-47f6-b867-8301334d33bc.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T23:41:00.761Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"Created post with id: 12","time":"2015-10-27T23:41:00.772Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:41:00.806Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:41:00.809Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '259454d0-b9be-4eaf-b29d-b47e581fbad9.jpeg',\n  'image/jpeg',\n  'a',\n  10 ]","time":"2015-10-27T23:41:00.809Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:41:00.825Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:41:00.827Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ undefined,\n  'PODE!',\n  'e9b3c78c-3fec-4823-93bb-6bcd4f0ab78f.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-27T23:41:00.827Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:41:00.841Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:41:00.845Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '13142503-9cf1-409f-8ee4-fd22480c9362.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-27T23:41:00.846Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:41:00.858Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-27T23:41:00.859Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?', 'PODE!', undefined, undefined, '4', 10 ]","time":"2015-10-27T23:41:00.860Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:41:00.880Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T23:41:00.881Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?8',\n  'PODE!',\n  '520aca96-9062-4a21-a272-08b84b76c44c.jpeg',\n  'image/jpeg',\n  10,\n  '12' ]","time":"2015-10-27T23:41:00.881Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"Updated post!","time":"2015-10-27T23:41:00.884Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:41:00.906Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-27T23:41:00.908Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[ 'PODE SER PEPSI?asdahgahgioadogjdiogjadg',\n  'PODE!',\n  undefined,\n  undefined,\n  10,\n  '12' ]","time":"2015-10-27T23:41:00.908Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"Updated post!","time":"2015-10-27T23:41:00.910Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:41:00.915Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3344,"level":30,"msg":"[Auth with token]","time":"2015-10-27T23:41:00.916Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4624,"level":30,"msg":"SELECT p.id_post, p.title, p.description, p.id_creator, p.id_competition, p.mimetype,  u.name FROM post p, instads_user u WHERE u.id_user = p.id_creator  LIMIT ($1)  OFFSET ($2) ","time":"2015-10-28T10:25:31.656Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4624,"level":30,"msg":"[ 15, 0 ]","time":"2015-10-28T10:25:31.659Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T11:19:48.590Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-66',\n  '9e20c99c-b055-4074-9637-e2d0dc5c0ead.jpeg' ]","time":"2015-10-28T11:19:48.590Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"Created company with id: 114","time":"2015-10-28T11:19:48.637Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T11:19:48.715Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-56',\n  '97f57b69-50df-4624-9922-b90b7aa486a9.jpeg' ]","time":"2015-10-28T11:19:48.715Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"Created company with id: 115","time":"2015-10-28T11:19:48.715Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T11:19:48.731Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ undefined,\n  '84.865.945/0001-66',\n  '6a29cd7e-42f9-49b8-ae73-6018b9c412ec.jpeg' ]","time":"2015-10-28T11:19:48.731Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":50,"err":{"message":"null value in column \"name\" violates not-null constraint","name":"error","stack":"error: null value in column \"name\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"name\" violates not-null constraint","time":"2015-10-28T11:19:48.747Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T11:19:48.762Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'Pepsi',\n  undefined,\n  'fe007062-27b7-422d-8e0f-d1648fa83484.jpeg' ]","time":"2015-10-28T11:19:48.762Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":50,"err":{"message":"null value in column \"cnpj\" violates not-null constraint","name":"error","stack":"error: null value in column \"cnpj\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"cnpj\" violates not-null constraint","time":"2015-10-28T11:19:48.762Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T11:19:48.778Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined ]","time":"2015-10-28T11:19:48.778Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":50,"err":{"message":"null value in column \"logo\" violates not-null constraint","name":"error","stack":"error: null value in column \"logo\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"logo\" violates not-null constraint","time":"2015-10-28T11:19:48.778Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T11:19:48.778Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'PSIPEPS!!!',\n  '84.865.945/0001-66',\n  '6d9b1422-ca6e-4740-8768-827dde0dbb8b.jpeg',\n  '114' ]","time":"2015-10-28T11:19:48.778Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"Updated company! ","time":"2015-10-28T11:19:48.778Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T11:19:48.794Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined, '114' ]","time":"2015-10-28T11:19:48.809Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5816,"level":30,"msg":"Updated company! ","time":"2015-10-28T11:19:48.809Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6168,"level":30,"msg":"Example app listening at http://:::3000","time":"2015-10-28T12:15:17.221Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5416,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:15:30.304Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6148,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:16:06.007Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3984,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:16:10.129Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":1660,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:16:11.834Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6996,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:16:12.661Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5912,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:16:16.289Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6424,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:16:17.457Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5540,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:16:18.875Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":3824,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:16:50.204Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:19:38.702Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:19:41.381Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-66',\n  '4e6d27d6-d1dd-4ec8-a1c8-6ea0e93c5f3a.jpeg' ]","time":"2015-10-28T12:19:41.381Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"Created company with id: 119","time":"2015-10-28T12:19:41.396Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:19:41.459Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-56',\n  '9a7cf53a-86dd-4563-bf82-befccd58f7a8.jpeg' ]","time":"2015-10-28T12:19:41.459Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"Created company with id: 120","time":"2015-10-28T12:19:41.459Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:19:41.474Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ undefined,\n  '84.865.945/0001-66',\n  '8e05aa69-5659-4811-a807-82d50dbcae4e.jpeg' ]","time":"2015-10-28T12:19:41.474Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":50,"err":{"message":"null value in column \"name\" violates not-null constraint","name":"error","stack":"error: null value in column \"name\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"name\" violates not-null constraint","time":"2015-10-28T12:19:41.474Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:19:41.490Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'Pepsi',\n  undefined,\n  '8275819d-66bc-4309-9fe8-7f43fd0e11bd.jpeg' ]","time":"2015-10-28T12:19:41.490Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":50,"err":{"message":"null value in column \"cnpj\" violates not-null constraint","name":"error","stack":"error: null value in column \"cnpj\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"cnpj\" violates not-null constraint","time":"2015-10-28T12:19:41.490Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:19:41.506Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined ]","time":"2015-10-28T12:19:41.506Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":50,"err":{"message":"null value in column \"logo\" violates not-null constraint","name":"error","stack":"error: null value in column \"logo\" violates not-null constraint\n    at Connection.parseE (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:539:11)\n    at Connection.parseMessage (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:366:17)\n    at Socket.<anonymous> (C:\\Users\\U\\node_modules\\pg\\lib\\connection.js:105:22)\n    at emitOne (events.js:77:13)\n    at Socket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)\n    at Socket.Readable.push (_stream_readable.js:110:10)\n    at TCP.onread (net.js:523:20)","code":"23502"},"msg":"null value in column \"logo\" violates not-null constraint","time":"2015-10-28T12:19:41.506Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T12:19:41.521Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'PSIPEPS!!!',\n  '84.865.945/0001-66',\n  'b6f8dff5-1a6b-45d3-b619-2a87514253ca.jpeg',\n  '119' ]","time":"2015-10-28T12:19:41.521Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"Updated company! ","time":"2015-10-28T12:19:41.521Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T12:19:41.537Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined, '119' ]","time":"2015-10-28T12:19:41.537Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6540,"level":30,"msg":"Updated company! ","time":"2015-10-28T12:19:41.537Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7216,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:19:42.337Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7924,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:20:36.406Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8180,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:21:04.921Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:21:06.717Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:21:12.752Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-66',\n  '905ce73a-424c-448b-899b-ace8f5eb5228.jpeg' ]","time":"2015-10-28T12:21:12.752Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"Created company with id: 124","time":"2015-10-28T12:21:12.767Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:21:12.842Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-56',\n  '15ef3fff-b764-49f2-adc5-d68905b79300.jpeg' ]","time":"2015-10-28T12:21:12.842Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:21:12.857Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ undefined,\n  '84.865.945/0001-66',\n  'b3501697-a930-4cef-9732-98c6a2e53b27.jpeg' ]","time":"2015-10-28T12:21:12.857Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:21:12.873Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'Pepsi',\n  undefined,\n  '1f6cfd33-404a-418f-beb1-bbfd50bcd44f.jpeg' ]","time":"2015-10-28T12:21:12.873Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:21:12.889Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined ]","time":"2015-10-28T12:21:12.889Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T12:21:12.904Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'PSIPEPS!!!',\n  '84.865.945/0001-66',\n  'cba0e68a-7d8d-4aa8-b9b2-02e9f1c74bd9.jpeg',\n  '124' ]","time":"2015-10-28T12:21:12.904Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"Updated company! ","time":"2015-10-28T12:21:12.904Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T12:21:12.920Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined, '124' ]","time":"2015-10-28T12:21:12.920Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7192,"level":30,"msg":"Updated company! ","time":"2015-10-28T12:21:12.920Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7408,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:21:13.672Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6760,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:21:25.708Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6280,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:21:31.893Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7524,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:21:34.490Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7852,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:21:56.187Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7900,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:21:57.810Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6408,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:22:24.804Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8092,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:22:25.632Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8164,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:22:28.161Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7344,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:22:35.946Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":2816,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:22:45.442Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":4328,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:22:46.828Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7380,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:22:55.745Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6528,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:22:56.640Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6244,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:22:58.650Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5448,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:23:05.920Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7640,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:23:17.812Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7792,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:23:36.717Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7880,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:23:45.156Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":5668,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:23:49.020Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7060,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:23:57.490Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8032,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:24:00.738Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8096,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:24:01.570Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7452,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:24:05.478Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7332,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:24:15.511Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:24:29.223Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:24:41.178Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-66',\n  'cd39b51c-3c7e-48e6-b7a7-550fc4cccf13.jpeg' ]","time":"2015-10-28T12:24:41.178Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"Created company with id: 125","time":"2015-10-28T12:24:41.178Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:24:41.257Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-56',\n  'b79a2a21-91d8-4fc1-bfba-b1e781824929.jpeg' ]","time":"2015-10-28T12:24:41.257Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:24:41.257Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ undefined,\n  '84.865.945/0001-66',\n  '41801cf3-4774-4329-b8e9-6c1dcf83cb37.jpeg' ]","time":"2015-10-28T12:24:41.257Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:24:41.272Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'Pepsi',\n  undefined,\n  '9a035283-8564-45e8-950c-26d2d13150f0.jpeg' ]","time":"2015-10-28T12:24:41.272Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:24:41.288Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined ]","time":"2015-10-28T12:24:41.288Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T12:24:41.303Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'PSIPEPS!!!',\n  '84.865.945/0001-66',\n  'd205305c-3c9f-4dfe-a412-923c5759d138.jpeg',\n  '125' ]","time":"2015-10-28T12:24:41.303Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"Updated company! ","time":"2015-10-28T12:24:41.303Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T12:24:41.319Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined, '125' ]","time":"2015-10-28T12:24:41.319Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7312,"level":30,"msg":"Updated company! ","time":"2015-10-28T12:24:41.319Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:24:42.056Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:24:47.230Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  'cc46f4e0-6b01-4484-93ec-7bad57d35351.jpeg' ]","time":"2015-10-28T12:24:47.230Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"Created competition with id: 68","time":"2015-10-28T12:24:47.246Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:24:47.308Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  'asd',\n  '2015-02-03 16:23',\n  '97',\n  '462464d3-eeb7-4743-9465-8af3f51cd273.jpeg' ]","time":"2015-10-28T12:24:47.308Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:24:47.340Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-01 10:23',\n  '97',\n  '82e93c73-a7f6-450b-b79e-9a3eb25f6005.jpeg' ]","time":"2015-10-28T12:24:47.340Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:24:47.355Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ undefined,\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '42b979a0-0d52-480b-965f-b6e90fdd5b33.jpeg' ]","time":"2015-10-28T12:24:47.355Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:24:47.371Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  undefined,\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '36516633-d92b-4507-9139-6a77755fbc4d.jpeg' ]","time":"2015-10-28T12:24:47.371Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:24:47.386Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  undefined,\n  '9a17a2ef-0384-4e58-8be2-11f37a65c92f.jpeg' ]","time":"2015-10-28T12:24:47.386Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:24:47.402Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  undefined ]","time":"2015-10-28T12:24:47.402Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'string',\n  'string',\n  'timestamp',\n  'timestamp',\n  'int',\n  'int',\n  'uuid' ]","time":"2015-10-28T12:24:47.418Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'SUPER DUPER TITLE08',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '68',\n  'd5be3dc1-9b4e-4bc3-b9d9-4308b8548914.jpeg' ]","time":"2015-10-28T12:24:47.418Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"Updated competition!","time":"2015-10-28T12:24:47.433Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'string',\n  'string',\n  'timestamp',\n  'timestamp',\n  'int',\n  'int',\n  'uuid' ]","time":"2015-10-28T12:24:47.449Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '68',\n  '01ba244b-330a-4e27-9847-901759fda38a.jpeg' ]","time":"2015-10-28T12:24:47.449Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":8184,"level":30,"msg":"Updated competition!","time":"2015-10-28T12:24:47.449Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:24:48.170Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:24:53.109Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:24:53.116Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '1e0be946-c17f-446f-aefc-3adf2eb176e5.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-28T12:24:53.116Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"Created post with id: 13","time":"2015-10-28T12:24:53.116Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:24:53.131Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:24:53.147Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '431a1d1a-6ed9-4765-ae1c-11f845384059.jpeg',\n  'image/jpeg',\n  'a',\n  10 ]","time":"2015-10-28T12:24:53.147Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:24:53.162Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:24:53.162Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ undefined,\n  'PODE!',\n  '9ff4bf1d-f4e4-401a-91b2-ef38201a05d8.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-28T12:24:53.162Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:24:53.188Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:24:53.191Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '931bcf3f-080e-4040-9650-cefab08f392a.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-28T12:24:53.192Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:24:53.201Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:24:53.202Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'PODE SER PEPSI?', 'PODE!', undefined, undefined, '4', 10 ]","time":"2015-10-28T12:24:53.202Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:24:53.219Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-28T12:24:53.221Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'PODE SER PEPSI?8',\n  'PODE!',\n  'c91c7eff-7f2f-4147-94fb-38e13e70cd29.jpeg',\n  'image/jpeg',\n  10,\n  '13' ]","time":"2015-10-28T12:24:53.221Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"Updated post!","time":"2015-10-28T12:24:53.221Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:24:53.237Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-28T12:24:53.237Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[ 'PODE SER PEPSI?asdahgahgioadogjdiogjadg',\n  'PODE!',\n  undefined,\n  undefined,\n  10,\n  '13' ]","time":"2015-10-28T12:24:53.237Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"Updated post!","time":"2015-10-28T12:24:53.237Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:24:53.237Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7984,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:24:53.237Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7876,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:24:53.944Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7436,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:25:00.113Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6960,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:25:13.769Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7516,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:25:21.189Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7388,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:25:43.469Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:25:57.416Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:25:59.914Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-66',\n  'eca285d5-1dbe-4c3c-8ca5-6622ea2b8ebc.jpeg' ]","time":"2015-10-28T12:25:59.915Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"Created company with id: 126","time":"2015-10-28T12:25:59.924Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:25:59.991Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-56',\n  '81007ae2-afdd-4be0-8f5d-882034182568.jpeg' ]","time":"2015-10-28T12:25:59.991Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:26:00.008Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ undefined,\n  '84.865.945/0001-66',\n  'd361d9e6-32dd-44a3-b010-7a03f7548307.jpeg' ]","time":"2015-10-28T12:26:00.009Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:26:00.027Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'Pepsi',\n  undefined,\n  'b9d23f0d-cead-43ed-9ca0-ae7ac7e7018c.jpeg' ]","time":"2015-10-28T12:26:00.028Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:26:00.044Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined ]","time":"2015-10-28T12:26:00.045Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T12:26:00.062Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'PSIPEPS!!!',\n  '84.865.945/0001-66',\n  '145b2e90-f31d-48ae-8c2c-9abad1e11e7a.jpeg',\n  '126' ]","time":"2015-10-28T12:26:00.062Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"Updated company! ","time":"2015-10-28T12:26:00.066Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T12:26:00.078Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined, '126' ]","time":"2015-10-28T12:26:00.079Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"Updated company! ","time":"2015-10-28T12:26:00.081Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:00.118Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '91473ae0-db69-4456-b2c3-6882386b7d90.jpeg' ]","time":"2015-10-28T12:26:00.119Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"Created competition with id: 69","time":"2015-10-28T12:26:00.128Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:00.149Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  'asd',\n  '2015-02-03 16:23',\n  '97',\n  '14e89667-afac-44ae-b1c6-d72e02704f1a.jpeg' ]","time":"2015-10-28T12:26:00.149Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:00.179Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-01 10:23',\n  '97',\n  'e780d5f4-ee0d-4278-95df-b732b871dbf5.jpeg' ]","time":"2015-10-28T12:26:00.179Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:00.191Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ undefined,\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '73a20d94-5191-496f-9c85-398935f917ab.jpeg' ]","time":"2015-10-28T12:26:00.191Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:00.207Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  undefined,\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '3f52a2f3-6bb8-4d2a-8802-5de790d7b3e3.jpeg' ]","time":"2015-10-28T12:26:00.208Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:00.225Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  undefined,\n  '596b9008-1a91-454c-b860-8141d2487b80.jpeg' ]","time":"2015-10-28T12:26:00.226Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:00.238Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  undefined ]","time":"2015-10-28T12:26:00.239Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string',\n  'string',\n  'timestamp',\n  'timestamp',\n  'int',\n  'int',\n  'uuid' ]","time":"2015-10-28T12:26:00.266Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'SUPER DUPER TITLE08',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '69',\n  '6934dfe8-25b8-4a2d-bd74-1d246599e37e.jpeg' ]","time":"2015-10-28T12:26:00.267Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"Updated competition!","time":"2015-10-28T12:26:00.270Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string',\n  'string',\n  'timestamp',\n  'timestamp',\n  'int',\n  'int',\n  'uuid' ]","time":"2015-10-28T12:26:00.284Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '69',\n  '47fc79a1-a6bf-469a-a589-409f89961d18.jpeg' ]","time":"2015-10-28T12:26:00.285Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"Updated competition!","time":"2015-10-28T12:26:00.288Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:00.324Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:26:00.328Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'b21b4676-edd0-46fc-9410-bd7acf9cbcb0.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-28T12:26:00.328Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"Created post with id: 14","time":"2015-10-28T12:26:00.330Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:00.342Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:26:00.344Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '65ca8c7a-e12b-4720-b501-39a1be8182e5.jpeg',\n  'image/jpeg',\n  'a',\n  10 ]","time":"2015-10-28T12:26:00.344Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:00.352Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:26:00.353Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ undefined,\n  'PODE!',\n  'c0173656-f006-480e-96e5-8851afa8623c.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-28T12:26:00.354Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:00.367Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:26:00.368Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '6d218ad4-dd64-481f-80c1-296065966590.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-28T12:26:00.368Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:00.379Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:26:00.381Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'PODE SER PEPSI?', 'PODE!', undefined, undefined, '4', 10 ]","time":"2015-10-28T12:26:00.381Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:00.396Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-28T12:26:00.398Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'PODE SER PEPSI?8',\n  'PODE!',\n  '94ecdac3-8a9d-45eb-8ec3-47f99c3944c7.jpeg',\n  'image/jpeg',\n  10,\n  '14' ]","time":"2015-10-28T12:26:00.398Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"Updated post!","time":"2015-10-28T12:26:00.400Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:00.407Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-28T12:26:00.409Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[ 'PODE SER PEPSI?asdahgahgioadogjdiogjadg',\n  'PODE!',\n  undefined,\n  undefined,\n  10,\n  '14' ]","time":"2015-10-28T12:26:00.410Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"Updated post!","time":"2015-10-28T12:26:00.411Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:00.419Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7812,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:00.420Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7652,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:26:01.178Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:26:13.281Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:26:20.062Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-66',\n  '0403aeec-bcd8-4464-8fa6-355529556036.jpeg' ]","time":"2015-10-28T12:26:20.062Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"Created company with id: 127","time":"2015-10-28T12:26:20.078Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:26:20.135Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'Pepsi',\n  '84.865.945/0001-56',\n  'ea5bb1b4-0483-4319-bd30-00c32d7de1d0.jpeg' ]","time":"2015-10-28T12:26:20.135Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:26:20.150Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ undefined,\n  '84.865.945/0001-66',\n  'cfc2537c-839d-4157-9fb8-62981182145e.jpeg' ]","time":"2015-10-28T12:26:20.150Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:26:20.166Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'Pepsi',\n  undefined,\n  '1e51840e-ad6e-4a6e-b7e2-2aa67d2b7900.jpeg' ]","time":"2015-10-28T12:26:20.166Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'cnpj', 'uuid' ]","time":"2015-10-28T12:26:20.181Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined ]","time":"2015-10-28T12:26:20.181Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T12:26:20.197Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'PSIPEPS!!!',\n  '84.865.945/0001-66',\n  '29a6b577-594f-47ed-bcf9-30845e26132e.jpeg',\n  '127' ]","time":"2015-10-28T12:26:20.197Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"Updated company! ","time":"2015-10-28T12:26:20.213Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'cnpj', 'uuid_optional', 'int' ]","time":"2015-10-28T12:26:20.226Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'Pepsi', '84.865.945/0001-66', undefined, '127' ]","time":"2015-10-28T12:26:20.226Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"Updated company! ","time":"2015-10-28T12:26:20.229Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:20.267Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '26298822-3b56-4d13-a9a5-f62db518f608.jpeg' ]","time":"2015-10-28T12:26:20.267Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"Created competition with id: 70","time":"2015-10-28T12:26:20.267Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:20.282Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  'asd',\n  '2015-02-03 16:23',\n  '97',\n  '8c4f592a-5c6e-458a-9b30-6c23d45d91e6.jpeg' ]","time":"2015-10-28T12:26:20.282Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:20.314Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-01 10:23',\n  '97',\n  '5fd70cc2-e4fa-46e8-81a1-d629f026f1bd.jpeg' ]","time":"2015-10-28T12:26:20.314Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:20.329Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ undefined,\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '4353108f-72ec-410d-b949-8ad142d2e8c8.jpeg' ]","time":"2015-10-28T12:26:20.329Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:20.345Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  undefined,\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  'a88655fd-8331-4b4f-b14a-ec10874e5ce3.jpeg' ]","time":"2015-10-28T12:26:20.345Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:20.361Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  undefined,\n  '814f2fde-3558-4e90-962a-c46248090a30.jpeg' ]","time":"2015-10-28T12:26:20.361Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'timestamp', 'timestamp', 'int', 'uuid' ]","time":"2015-10-28T12:26:20.376Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  undefined ]","time":"2015-10-28T12:26:20.376Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string',\n  'string',\n  'timestamp',\n  'timestamp',\n  'int',\n  'int',\n  'uuid' ]","time":"2015-10-28T12:26:20.407Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'SUPER DUPER TITLE08',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '70',\n  '8e66787b-7af5-47ea-a388-796d945f9560.jpeg' ]","time":"2015-10-28T12:26:20.407Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"Updated competition!","time":"2015-10-28T12:26:20.407Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string',\n  'string',\n  'timestamp',\n  'timestamp',\n  'int',\n  'int',\n  'uuid' ]","time":"2015-10-28T12:26:20.423Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'SUPER DUPER TITLE0',\n  'desc_here0',\n  '2015-02-02 10:23',\n  '2015-02-03 16:23',\n  '97',\n  '70',\n  'ecc0245c-b616-4a8a-ba1d-a525dac3e070.jpeg' ]","time":"2015-10-28T12:26:20.423Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"Updated competition!","time":"2015-10-28T12:26:20.423Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:20.454Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:26:20.470Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '0a059bca-951f-478f-b5c6-7f9b4d7c17b2.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-28T12:26:20.470Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"Created post with id: 15","time":"2015-10-28T12:26:20.470Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:20.486Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:26:20.486Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  'd0bba9fa-6e4e-4c1b-9075-fec9ce2fbc46.jpeg',\n  'image/jpeg',\n  'a',\n  10 ]","time":"2015-10-28T12:26:20.486Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:20.501Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:26:20.501Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ undefined,\n  'PODE!',\n  '87bd5a04-56c7-428e-af8d-ce5fb9c89ea5.jpeg',\n  'image/jpeg',\n  '4',\n  10 ]","time":"2015-10-28T12:26:20.501Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:20.517Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:26:20.517Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'PODE SER PEPSI?',\n  'PODE!',\n  '85b33f78-c7e2-4212-a358-b16e08a52efb.jpeg',\n  'image/jpeg',\n  undefined,\n  10 ]","time":"2015-10-28T12:26:20.517Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:20.517Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string', 'string', 'uuid', 'mimetype', 'int', 'int' ]","time":"2015-10-28T12:26:20.532Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'PODE SER PEPSI?', 'PODE!', undefined, undefined, '4', 10 ]","time":"2015-10-28T12:26:20.532Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:20.532Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-28T12:26:20.548Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'PODE SER PEPSI?8',\n  'PODE!',\n  '6c6237a0-647b-4c26-8913-dc38cc5830a1.jpeg',\n  'image/jpeg',\n  10,\n  '15' ]","time":"2015-10-28T12:26:20.548Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"Updated post!","time":"2015-10-28T12:26:20.548Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:20.548Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'string',\n  'string',\n  'uuid_optional',\n  'mimetype_optional',\n  'int',\n  'int' ]","time":"2015-10-28T12:26:20.548Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[ 'PODE SER PEPSI?asdahgahgioadogjdiogjadg',\n  'PODE!',\n  undefined,\n  undefined,\n  10,\n  '15' ]","time":"2015-10-28T12:26:20.548Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"Updated post!","time":"2015-10-28T12:26:20.548Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:20.564Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":560,"level":30,"msg":"[Auth with token]","time":"2015-10-28T12:26:20.564Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6416,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:26:21.312Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7600,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:26:22.436Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":7396,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:26:30.736Z","v":0}
+{"name":"instads","hostname":"AOFF4","pid":6828,"level":30,"msg":"Instads REST API listening at http://:::3000","time":"2015-10-28T12:26:33.463Z","v":0}

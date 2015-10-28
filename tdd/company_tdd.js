@@ -1,13 +1,12 @@
 /** TEST DRIVEN DEVELOPMENT CASE: COMPANY */
 
-var http = require('http');
-var chai = require('chai');
-var assert = chai.assert;
-var expect = chai.expect;
-var FormData = require('form-data');
-var fs = require('fs');
-var pgp = require('pg-promise')(/*options*/);
-var db = pgp("postgres://postgres:dom1nion!@127.0.0.1:5432/instads");
+var common 		= require("../common");
+var assert 		= common.assert;
+var expect 		= common.expect;
+var http 		= common.http;
+var FormData 	= common.FormData;
+var fs 			= common.fs;
+var db			= common.db;
 
 function returnHttpRequest(form) {
 	return http.request({ // creating request

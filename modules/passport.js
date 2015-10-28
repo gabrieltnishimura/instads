@@ -1,19 +1,12 @@
 // config/passport.js
 
-// load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
-
-// Database related imports
-var pgp 		= require('./pgp');
-var db 			= pgp.db;
-// Passport and Auth related imports
-var bcrypt   	= require('bcrypt-nodejs');
-// Logging related imports
-var common 		= require('./common');
-var log 		= common.log;
-// General Configs
-var cfg 		= require('C:/Users/U/Desktop/config.js');
+var common 		= require('../common');
+var db 			= common.db; // Database related imports
+var bcrypt   	= common.bcrypt; // Passport and Auth related imports
+var log 		= common.log; // Logging related imports
+var cfg 		= common.config; // General Configs
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {

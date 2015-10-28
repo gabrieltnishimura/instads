@@ -1,35 +1,30 @@
 // Main Application
 var express 		= require('express');
 var app 			= module.exports = express();
-var https 			= require('https');
-// Parsers
-var bodyParser 		= require('body-parser');
-var cookieParser 	= require('cookie-parser');
-// Logging control
-var morgan 			= require('morgan');
-var bunyan			= require('bunyan');
-var common 			= require('./modules/common');
+var common 			= require('./common.js');	// Common
+var bodyParser 		= common.bodyParser;	// Parsers
+var cookieParser 	= common.cookieParser;
+var morgan 			= common.morgan;		// Logging
+var bunyan			= common.bunyan;
 var log 			= common.log;
-// Auth
-var passport		= require('passport');
-var session      	= require('express-session');
-var pgSession 		= require('connect-pg-promise')(session);
-// Database related imports
-var pgp 			= require('./modules/pgp');
+var passport		= common.passport;		// Session and Auth
+var session      	= common.session;
+var pgSession 		= common.pgSession;
+var db 				= common.db;			// Database related imports
 
 var server 			= app.listen(3000, function () {
 	var host = server.address().address;
 	var port = server.address().port;
-	console.log('Example app listening at http://%s:%s', host, port);
+	log.info('Instads REST API listening at http://%s:%s', host, port);
 });
 
-app.use(express.static("./view"));
+app.use(express.static("./view")); // before sessions please
 app.use(cookieParser()); 		// read cookies (needed for auth)
 app.use(bodyParser.urlencoded({extended: true})); // this is like super important
 app.use(bodyParser.json());    	// to support JSON-encoded bodies
 app.use(session({  
 	store: new pgSession({
-		db : pgp.db
+		db : db
 	}),
 	secret: "my secret is secret",
 	cookie: { secure : false, maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days 

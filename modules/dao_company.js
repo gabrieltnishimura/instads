@@ -27,33 +27,27 @@ CREATE TABLE company (	id_company SERIAL PRIMARY KEY,
 // ---- [start of imports] ----
 // Main Imports - Express and App
 var app 		= require('../server');
-// Database related imports
-var pgp 		= require('./pgp');
-var db 			= pgp.db;
-// Logging related imports
-var common 		= require('./common');
-var log			= common.log;
+// Common modules
+var common 		= require('../common');
 // Config related imports
-var cfg 		= require('./config');
+var cfg 		= common.config;
+// Logging related imports
+var log			= common.log;
+// Database related imports
+var db 			= common.db;
 // Uniqueness related imports
-var uuid 		= require('node-uuid');
+var uuid 		= common.uuid;
 // File upload related imports
-var fs 			= require('fs');
-var multer  	= require('multer');
+var fs 			= common.fs;
+var multer  	= common.multer;
+// ---- [end of imports] ----
+
+// Creating upload middleware for Company Routes
 var upload 		= multer({
-	fileFilter: function (req, file, cb) {
-		if(file) {
-			if (file.mimetype.indexOf('image') != -1) { // valid image file
-				cb(null, true);
-			} else { // invalid file
-				log.error("Wrong filetype provided");
-				cb(null, false);
-			}
-		}
-	}, 
+	fileFilter: common.fileFilterImages, 
 	storage: multer.diskStorage({
 		destination: function (req, file, cb) {
-			cb(null, 'uploads/company/');
+			cb(null, cfg.DEFAULT_UPLOAD_DIR_COMPANY);
 		},
 		filename: function (req, file, cb) {
 			if(file) {
@@ -63,7 +57,6 @@ var upload 		= multer({
 	}),
 	limits: { fileSize: cfg.DEFAULT_MAXIMUM_UPLOAD_LIMIT_COMPANY * 1024 * 1024 }
 });
-// ---- [end of imports] ----
 
 /** Demo upload page! */
 app.get('/post_company', function (req, res) {
@@ -81,7 +74,11 @@ app.post('/api/v1/companies', upload.single('logo'), function(req, res) {
 	var q_params = [req.body.name, 											// company name
 					req.body.cnpj, 										  	// company cnpj
 					req.file !== undefined ? req.file.filename : undefined];// filename in uuid format
-	verifyParams(['string', 'cnpj', 'uuid'], q_params, res);
+
+	var v = common.is_data_valid(['string', 'cnpj', 'uuid'], q_params);
+	if (!v.success) { // verify errors in provided parameters
+		res.status(400).end(v.error); return;
+	}
 	
 	// query posgres for one result
 	db.one("INSERT INTO company (name, cnpj, logo) VALUES ($1, $2, $3) RETURNING id_company", q_params)
@@ -191,8 +188,12 @@ app.put('/api/v1/companies/:id_company', upload.single('logo'), function (req, r
 					req.body.cnpj, 										  	// company cnpj
 					req.file !== undefined ? req.file.filename : undefined,	// filename in uuid format
 					req.params.id_company];									// company id
-	verifyParams(['string', 'cnpj', 'uuid_optional', 'int'], q_params, res);
 
+	var v = common.is_data_valid(['string', 'cnpj', 'uuid_optional', 'int'], q_params);
+	if (!v.success) { // verify errors in provided parameters
+		res.status(400).end(v.error); return;
+	}
+	
 	var q = "UPDATE company com_new SET (name, cnpj, logo) = ($1, $2, $3) " +
 			"FROM company com_old WHERE com_old.id_company = com_new.id_company AND com_new.id_company = ($4) " +
 			"RETURNING com_old.logo;"
@@ -214,11 +215,4 @@ app.put('/api/v1/companies/:id_company', upload.single('logo'), function (req, r
 function sendStatus500Error(res) {
 	res.writeHead(500, {'content-type': 'text/plain'});
 	res.end('Server internal error. ');
-}
-
-function verifyParams(types, vars, res) {
-	var v = common.is_data_valid(types, vars);
-	if (!v.success) { // verify errors in provided parameters
-		res.status(400).end(v.error);
-	}
 }

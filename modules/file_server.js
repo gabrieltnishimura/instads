@@ -1,13 +1,7 @@
-var fs = require('fs');
-var express = require("express");
-var app 		= require('../server');
-var UPLOAD_PATH = "C:/Users/U/Desktop/instads/uploads";
-var UPLOAD_PATH_COMPANY = "C:/Users/U/Desktop/instads/uploads/company";
-var UPLOAD_PATH_USER = "C:/Users/U/Desktop/instads/uploads/user";
-var UPLOAD_PATH_POST = "C:/Users/U/Desktop/instads/uploads/post";
-var UPLOAD_PATH_COMPETITION = "C:/Users/U/Desktop/instads/uploads/competition";
-var common = require('./common');
-var path = require('path');
+var app 	= require('../server');
+var common 	= require('../common');
+var path 	= common.path;
+var fs 		= common.fs;
 
 /** Serve images through node */
 app.get('/api/v1/file/company/:filename', function (req, res) {

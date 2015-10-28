@@ -35,35 +35,27 @@ CREATE TABLE competition (	id_competition SERIAL PRIMARY KEY,
 // ---- [start of imports] ----
 // Main Imports - Express and App
 var app 		= require('../server');
-// Database related imports
-var pgp 		= require('./pgp');
-var db 			= pgp.db;
-// Logging related imports
-var common 				= require('./common');
-var log			= common.log;
+// Common modules
+var common 		= require('../common');
 // Config related imports
-var cfg 		= require('./config');
+var cfg 		= common.config;
+// Logging related imports
+var log			= common.log;
+// Database related imports
+var db 			= common.db;
 // Uniqueness related imports
-var uuid 		= require('node-uuid');
-// Timestamp and timezone related imports
-var moment = require('moment-timezone');
+var uuid 		= common.uuid;
 // File upload related imports
-var fs 			= require('fs');
-var multer  	= require('multer');
+var fs 			= common.fs;
+var multer  	= common.multer;
+// ---- [end of imports] ----
+
+// Creating upload middleware for Competition Routes
 var upload 		= multer({
-	fileFilter: function (req, file, cb) {
-		if(file) {
-			if (file.mimetype.indexOf('image') != -1) { // valid image file
-				cb(null, true);
-			} else { // invalid file
-				log.error("Wrong filetype provided");
-				cb(null, false);
-			}
-		}
-	}, 
+	fileFilter: common.fileFilterImages, 
 	storage: multer.diskStorage({
 		destination: function (req, file, cb) {
-			cb(null, 'uploads/competition/');
+			cb(null, cfg.DEFAULT_UPLOAD_DIR_COMPETITION);
 		},
 		filename: function (req, file, cb) {
 			if(file) {
@@ -73,20 +65,12 @@ var upload 		= multer({
 	}),
 	limits: { fileSize: cfg.DEFAULT_MAXIMUM_UPLOAD_LIMIT_COMPANY * 1024 * 1024 }
 });
-// ---- [end of imports] ----
 
 /** Demo upload page! */
 app.get('/post_competition', function (req, res) {
 	res.sendFile(path.resolve('./view/post_competition.html'));
 });
 
-/*						title TEXT NOT NULL,
-							id_company INTEGER NOT NULL REFERENCES company(id_company),
-							starts TIMESTAMP WITH TIME ZONE,
-							ends TIMESTAMP WITH TIME ZONE,
-							posted TIMESTAMP WITH TIME ZONE,
-							description TEXT NOT NULL,
-							image TEXT NOT NULL )*/
 /** POST ROUTE -- MUST PROVIDE ALL PARAMETERS IN ORDER TO WORK **/
 app.post('/api/v1/competitions', upload.single('image'), function(req, res){
 	var q_params = [
@@ -97,12 +81,13 @@ app.post('/api/v1/competitions', upload.single('image'), function(req, res){
 		req.body.id_company, 										// @todo id_company
 		(req.file !== undefined) ? req.file.filename : undefined];	// filename in uuid format
 		
-	verifyParams(['string', 'string', 'timestamp', 'timestamp', 'int', 'uuid'], q_params, res);
-	//q_params[2] = moment().tz(req.body.starts, req.body.timezone).format("YYYY-MM-DD HH:mm");
-	//q_params[3] = moment().tz(req.body.ends, req.body.timezone).format("YYYY-MM-DD HH:mm");
-	
+	var v = common.is_data_valid(['string', 'string', 'timestamp', 'timestamp', 'int', 'uuid'], q_params);
+	if (!v.success) { // verify errors in provided parameters
+		res.status(400).end(v.error); return;
+	}
+
 	if (common.compare_timestamps(req.body.starts, req.body.ends) < 0) {
-		res.status(400).json({success:false, error:"Before vs After = negative interval"});
+		res.status(400).json({success:false, error:"Before vs After = negative interval"}); return;
 	}
 	
 	var q = "INSERT INTO competition (title, description, starts, ends, posted, id_company, image) VALUES "+
@@ -120,7 +105,7 @@ app.post('/api/v1/competitions', upload.single('image'), function(req, res){
 
 /** LIMIT WITHOUT NEED OF PARAMETERS **/
 app.get('/api/v1/competitions', function (req, res) {
-	var q = "SELECT t.title, t.image, c.name, c.id_company FROM competition t, company c WHERE c.id_company = t.id_company";
+	var q = "SELECT t.id_competition, t.title, t.image, c.name, c.id_company FROM competition t, company c WHERE c.id_company = t.id_company";
 	var q_params = new Array();
 	
 	// Get parameters from URL
@@ -158,17 +143,17 @@ app.get('/api/v1/competitions', function (req, res) {
 			q_params.push(order);
 			q += " ORDER BY title $" + q_params.length + " ";
 		} else {
-			res.status(400).end("Order provided isn't ASC nor DESC. Please refer to documentation or provide right parameters");
+			res.status(400).end("Order provided isn't ASC nor DESC. Please refer to documentation or provide right parameters"); return;
 		}
 	}
 	
 	// Limit has to be a number
 	if (limit !== undefined && isNaN(limit))
-		res.status(400).end("Limit provided is not a integer number. Please refer to documentation or provide a integer.");
+		res.status(400).end("Limit provided is not a integer number. Please refer to documentation or provide a integer."); return;
 
 	// Offset has to be a number
 	if (offset !== undefined && isNaN(offset))
-		res.status(400).end("Offset provided is not a integer number. Please refer to documentation or provide a integer.");
+		res.status(400).end("Offset provided is not a integer number. Please refer to documentation or provide a integer."); return;
 
 	// DEFAULT LIMIT defined at config.js
 	q_params.push(limit < cfg.DEFAULT_QUERY_LIMIT_POST ? limit : cfg.DEFAULT_QUERY_LIMIT_POST);
@@ -194,10 +179,10 @@ app.get('/api/v1/competitions', function (req, res) {
 app.get('/api/v1/competitions/:id_competition', function (req, res) {
 	// Validade parameters from URL
 	var id_competition = req.params.id_competition;
-	var q = "DELETE FROM competition WHERE id_competition = ($1);";
+	var q = "SELECT * FROM competition WHERE id_competition = ($1);";
 
 	if (id_competition === undefined || isNaN(id_competition)) {
-		res.status(400).end("[BAD REQUEST] Invalid parameters provided.");
+		res.status(400).end("[BAD REQUEST] Invalid parameters provided."); return;
 	}
 	
 	db.one(q, [id_competition])
@@ -220,7 +205,7 @@ app.delete('/api/v1/competitions/:id_competition', function (req, res) {
 	var q = "DELETE FROM competition WHERE id_competition = ($1);";
 
 	if (id_competition === undefined || isNaN(id_competition)) {
-		res.status(400).end("[BAD REQUEST] Invalid parameters provided.");
+		res.status(400).end("[BAD REQUEST] Invalid parameters provided."); return;
 	}
 	
 	db.none(q, [id_competition])
@@ -246,8 +231,11 @@ app.put('/api/v1/competitions/:id_competition', upload.single('image'), function
 		req.body.id_company, 										// @todo id_company
 		req.params.id_competition,									// id_competition
 		(req.file !== undefined) ? req.file.filename : undefined];	// filename in uuid format
-		
-	verifyParams(['string', 'string', 'timestamp', 'timestamp', 'int', 'int', 'uuid'], q_params, res);
+
+	var v = common.is_data_valid(['string', 'string', 'timestamp', 'timestamp', 'int', 'int', 'uuid'], q_params);
+	if (!v.success) { // verify errors in provided parameters
+		res.status(400).end(v.error); return;
+	}
 	
 	var q = "UPDATE competition competition_new SET (title, description, starts, ends, id_company, image) = "+
 			"($1, $2, $3, $4, $5, $7) FROM competition competition_old WHERE "+
@@ -276,11 +264,4 @@ app.put('/api/v1/competitions/:id_competition', upload.single('image'), function
 function sendStatus500Error(res) {
 	res.writeHead(500, {'content-type': 'text/plain'});
 	res.end('Server internal error. ');
-}
-
-function verifyParams(types, vars, res) {
-	var v = common.is_data_valid(types, vars);
-	if (!v.success) { // verify errors in provided parameters
-		res.status(400).end(v.error);
-	}
 }
