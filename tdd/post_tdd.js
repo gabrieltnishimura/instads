@@ -35,7 +35,7 @@ describe('Instads REST API v1 - posts routes', function() {
 	var request, id_post, id_competition, form, obj;
 	beforeEach(function(done) {
 		obj = { title: 'PODE SER PEPSI?', description: 'PODE!', id_competition: id_competition,
-				post_file: './view/css/img/coca_cola.jpg' };
+				post_file: './uploads/german.mp4' };
 		form = setFormParameters(obj);
 		request = returnHttpRequest(form);
 		done();
@@ -134,6 +134,7 @@ describe('Instads REST API v1 - posts routes', function() {
 			done();
 		}); //request
 	}); // it
+	/*
 	it('Should return 204 to DELETE',function(done){
 		form = setFormParameters(obj);
 		request = returnHttpRequest(form);
@@ -152,4 +153,5 @@ describe('Instads REST API v1 - posts routes', function() {
 			done();
 		}); //db
 	}); // it
+	*/
 });

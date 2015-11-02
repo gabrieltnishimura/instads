@@ -7,11 +7,12 @@ instads_posts.controller('PostsController', function($scope, Instads) {
 // Instads constructor function to encapsulate HTTP and pagination logic
 instads_posts.factory('Instads', function($http) {
 	var Instads = function() {
-		this.posts;
+		this.posts = new Array();
 		this.busy = false;
+		this.end = false;
 		this.after = 0;
 		this.zerocount = 0;
-		this.timeout = 5000;
+		this.timeout = 5000; // timeout for when there are no more posts to load
 	};
 
 	Instads.prototype.nextPage = function() {
@@ -22,19 +23,21 @@ instads_posts.factory('Instads', function($http) {
 		$http.get('/api/v1/posts?offset=' + this.after)
 		.success(function(data) {
 			if (this.zerocount < 4) {
-				if (data.length != 0) {
-					if (this.posts === undefined) {
-						this.posts = data;
-					} else {
-						this.posts.concat(data);
+				if (data.length > 0) {
+					this.end = false;
+					for (var each in data) {
+						this.posts.push(data[each]);
 					}
 					this.after += data.length;
+					console.log(this.after)
 				} else {
+					this.end = true;
 					this.zerocount++;
 				}
-			} else {
+			} else if (this.zerocount == 4){
 				console.log("wait for " + this.timeout);
 				setTimeout(this.undoZeroCount, this.timeout);
+				this.zerocount++;
 			}
 			this.busy = false;
 		}.bind(this))

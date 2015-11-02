@@ -8,14 +8,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
 
-    <title>Node/Angular Todo App</title>
+    <title>Hot!</title>
 
     <!-- SCROLLS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
     <style>
         html                    { overflow-y:scroll; }
         body                    { padding-top:50px; }
-        #todo-list              { margin-bottom:30px; }
+        #post-list              { margin-bottom:30px; }
     </style>
 
     <!-- SPELLS -->
@@ -31,39 +31,24 @@
 
         <!-- HEADER AND TODO COUNT -->
         <div class="jumbotron text-center">
-            <h1>I'm a Todo-aholic <span class="label label-info">{{ posts.length }}</span></h1>
+            <h1>Hot Page Instads <span class="label label-info">{{ posts.length }}</span></h1>
         </div>
 
         <!-- TODO LIST -->
-        <div id="todo-list" class="row">
+        <div id="post-list" class="row">
             <div class="col-sm-12" infinite-scroll='instads.nextPage()' infinite-scroll-disabled='instads.busy' infinite-scroll-distance='1'>
-
-                <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div class="checkbox" ng-repeat="post in instads.posts">
+                <div ng-repeat="post in instads.posts">
 					#{{post.id_post}} Post Title: {{ post.title }}
-					<img src="/api/v1/file/post/{{post.file_path}}">
+					<img ng-show="post.mimetype.indexOf('image') >= 0" class="img-responsive" ng-src="/api/v1/file/post/{{post.file_path}}">
+					<video ng-show="post.mimetype.indexOf('video') >= 0" width="100%" controls>
+						<source src="/api/v1/video/post/{{post.file_path}}" type="{{post.mimetype}}">
+						Your browser does not support the video tag.
+					</video>
                 </div>
 				<div ng-show='instads.busy'>Loading data...</div>
+				<div ng-show='instads.end'>There is no more data to show...</div>
             </div>
         </div>
-
-        <!-- FORM TO CREATE TODOS -->
-        <div id="todo-form" class="row">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-                <form>
-                    <div class="form-group">
-
-                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.text">
-                    </div>
-
-                    <!-- createToDo() WILL CREATE NEW TODOS -->
-                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createPost()">Add</button>
-                </form>
-            </div>
-        </div>
-
     </div>
-
 </body>
 </html>

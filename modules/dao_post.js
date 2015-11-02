@@ -96,20 +96,26 @@ app.post('/api/v1/posts', upload.single('post_file'), function(req, res) {
 
 		var v = common.is_data_valid(['string', 'string', 'uuid', 'mimetype', 'int', 'int'], q_params);
 		if (!v.success) { // verify errors in provided parameters
-			res.status(400).end(v.error); return;
+			if (req.file !== undefined) { // file must be deleted
+				fs.unlink('./uploads/posts/'+req.file.filename, function() {
+					res.status(400).end(v.error); return;	
+				}); 
+			} else {
+				res.status(400).end(v.error); return;	
+			}
+		} else {	
+			// query posgres for one result
+			db.one(	"INSERT INTO post (title, description, file_path, mimetype, time_posted, id_competition, id_creator) "+
+					"VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6) RETURNING id_post", q_params)
+			.then(function(data){
+				log.info("Created post with id: " + data.id_post);
+				res.set({'ETag': data.id_post});
+				res.status(201).end();
+			}, function(reason){
+				log.error(reason);
+				sendStatus500Error(res);
+			});	
 		}
-		
-		// query posgres for one result
-		db.one(	"INSERT INTO post (title, description, file_path, mimetype, time_posted, id_competition, id_creator) "+
-				"VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6) RETURNING id_post", q_params)
-		.then(function(data){
-			log.info("Created post with id: " + data.id_post);
-			res.set({'ETag': data.id_post});
-			res.status(201).end();
-		}, function(reason){
-			log.error(reason);
-			sendStatus500Error(res);
-		});	
 	}); // isLoggedIn
 });
 
@@ -211,12 +217,14 @@ app.get('/api/v1/posts', function (req, res) {
 	}
 	
 	// Limit has to be a number
-	if (limit !== undefined && isNaN(limit))
-		res.status(400).end("Limit provided is not a integer number. Please refer to documentation or provide a integer.");
+	if (limit !== undefined && isNaN(limit)) {
+		res.status(400).end("Limit provided is not a integer number. Please refer to documentation or provide a integer."); return;
+	}
 
 	// Offset has to be a number
-	if (offset !== undefined && isNaN(offset))
-		res.status(400).end("Offset provided is not a integer number. Please refer to documentation or provide a integer.");
+	if (offset !== undefined && isNaN(offset)) {
+		res.status(400).end("Offset provided is not a integer number. Please refer to documentation or provide a integer."); return;
+	}
 
 	// DEFAULT LIMIT defined at config.js
 	q_params.push(limit < cfg.DEFAULT_QUERY_LIMIT_POST ? limit : cfg.DEFAULT_QUERY_LIMIT_POST);
@@ -301,28 +309,35 @@ app.put('/api/v1/posts/:id_post', upload.single('post_file'), function (req, res
 
 		var v = common.is_data_valid(['string', 'string', 'uuid_optional', 'mimetype_optional', 'int', 'int'], q_params);
 		if (!v.success) { // verify errors in provided parameters
-			res.status(400).end(v.error); return;
-		}
-		
-		var q = "UPDATE post post_new SET (title, description, file_path, mimetype, id_creator) = "+
-				"($1, $2, $3, $4, $5) FROM post post_old WHERE post_new.id_post = post_old.id_post AND post_new.id_post = ($6) " + 
-				"RETURNING post_old.file_path";
-		
-		if (req.file === undefined) {
-			q = "UPDATE post post_new SET (title, description, id_creator) = "+
-				"($1, $2, $3)WHERE id_post = ($4);";
-			q_params.splice(q_params.indexOf(undefined),1); // remove undefined
-			q_params.splice(q_params.indexOf(undefined),1); // remove undefined
-		}
-		
-		db.oneOrNone(q, q_params) // query oneOrNone
-		.then(function(data){
-			if (req.file_path !== undefined) // if file uploaded, delete old file
-				fs.unlink('./uploads/posts/'+data.file_path);
+			if (req.file !== undefined) { // file must be deleted
+				fs.unlink('./uploads/posts/'+req.file.filename, function() {
+					res.status(400).end(v.error); return;	
+				}); 
+			} else {
+				res.status(400).end(v.error); return;
+			}
+		} else {
 			
-			log.info("Updated post!");
-			res.status(200).json({success : true});
-		});
+			var q = "UPDATE post post_new SET (title, description, file_path, mimetype, id_creator) = "+
+					"($1, $2, $3, $4, $5) FROM post post_old WHERE post_new.id_post = post_old.id_post AND post_new.id_post = ($6) " + 
+					"RETURNING post_old.file_path";
+			
+			if (req.file === undefined) {
+				q = "UPDATE post post_new SET (title, description, id_creator) = "+
+					"($1, $2, $3)WHERE id_post = ($4);";
+				q_params.splice(q_params.indexOf(undefined),1); // remove undefined
+				q_params.splice(q_params.indexOf(undefined),1); // remove undefined
+			}
+			
+			db.oneOrNone(q, q_params) // query oneOrNone
+			.then(function(data){
+				if (req.file_path !== undefined) // if file uploaded, delete old file
+					fs.unlink('./uploads/posts/'+data.file_path);
+				
+				log.info("Updated post!");
+				res.status(200).json({success : true});
+			});
+		}
 	});
 });
 
@@ -337,11 +352,10 @@ function isLoggedIn(req, res, next) {
 	var token = cfg.app_secret;
 	if (req.body.access_token !== undefined && req.body.access_token == token ||
 		req.query.access_token !== undefined && req.query.access_token == token) {
-		log.info("[Auth with token]");
+		log.info("[Auth with secret token]");
 		db.one("SELECT id_user, email FROM instads_user LIMIT 1", [])
 		.then(function(data){
 			req.user = {id : data.id_user};
-			//req.login({id : data.id_user, email : data.email}, function(err) {});
 			return next();
 		});
 	} else {
