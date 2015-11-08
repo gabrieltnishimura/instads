@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/send_post.css">
+</head>
+<body ng-app='instadsWebApp' ng-controller="CompaniesController">
+	<div class="container">
+		<h2>Send Post</h2>
+		<form role="form" action="/api/v1/posts" enctype="multipart/form-data" method="POST">
+			<div class="form-group">
+				<label for="title">Title:</label>
+				<input type="text" class="form-control" id="title" name="title" placeholder="Enter post title here">
+			</div>
+			<div class="form-group">
+				<label for="title">Description:</label>
+				<textarea name="description" cols="50" rows="10" id="title" name="title" class="form-control" placeholder="Enter post description here"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="post_file">File:</label>
+				<div class="input-group">
+					<span class="input-group-btn">
+						<span class="btn btn-primary btn-file">
+							Browse&hellip; <input name="post_file" id="post_file" type="file">
+						</span>
+					</span>
+					<input type="text" class="form-control" readonly id="file_name">
+				</div>
+			</div>
+			<input type="hidden" name="id_competition" value="12">
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <!-- load boostrap-->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+	<script src="/js/ng-infinite-scroll.min.js"></script><!-- load infinite scroll -->
+	<script src="/js/index_controller.js"></script>
+    <script src="/js/get_companies_controller.js"></script>
+	<script>	
+	$(document).ready(function() {
+		setTimeout(function() {
+			$("#post_file").on('change', function() {
+				$("#file_name").val($(this).val().replace(/C:\\fakepath\\/i, ''));
+			});
+		}, 500);
+	});
+	</script>
+</body>
+</html>

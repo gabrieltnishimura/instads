@@ -34,9 +34,9 @@ CREATE TABLE competition (	id_competition SERIAL PRIMARY KEY,
 
 // ---- [start of imports] ----
 // Main Imports - Express and App
-var app 		= require('../server');
+var app 		= require('../../server');
 // Common modules
-var common 		= require('../common');
+var common 		= require('../../common');
 // Config related imports
 var cfg 		= common.config;
 // Logging related imports
@@ -53,28 +53,13 @@ var path		= common.path;
 // ---- [end of imports] ----
 
 // Creating upload middleware for Competition Routes
-var upload 		= multer({
-	fileFilter: common.fileFilterImages, 
-	storage: multer.diskStorage({
-		destination: function (req, file, cb) {
-			cb(null, cfg.DEFAULT_UPLOAD_DIR_COMPETITION);
-		},
-		filename: function (req, file, cb) {
-			if(file) {
-				cb(null, uuid.v4() +"."+ file.mimetype.split('/')[1]); //ignores filename extension
-			}
-		}
-	}),
-	limits: { fileSize: cfg.DEFAULT_MAXIMUM_UPLOAD_LIMIT_COMPANY * 1024 * 1024 }
-});
-
-/** Demo upload page! */
-app.get('/post_competition', function (req, res) {
-	res.sendFile(path.resolve('./view/post_competition.html'));
-});
+var upload		= common.getMulterObject(
+	cfg.DEFAULT_UPLOAD_DIR_COMPETITION,
+	cfg.DEFAULT_MAXIMUM_UPLOAD_LIMIT_COMPANY, 
+	['image']);
 
 /** POST ROUTE -- MUST PROVIDE ALL PARAMETERS IN ORDER TO WORK **/
-app.post('/api/v1/competitions', upload.single('image'), function(req, res){
+app.post('/competitions', upload.single('image'), function(req, res) {
 	var q_params = [
 		req.body.title,												// competition title	
 		req.body.description,										// competition description
@@ -85,30 +70,35 @@ app.post('/api/v1/competitions', upload.single('image'), function(req, res){
 		
 	var v = common.is_data_valid(['string', 'string', 'timestamp', 'timestamp', 'int', 'uuid'], q_params);
 	if (!v.success) { // verify errors in provided parameters
-		res.status(400).end(v.error); return;
+		if (req.file !== undefined) { // file must be deleted if parameters are wrong
+			fs.unlink(cfg.DEFAULT_UPLOAD_DIR_COMPETITION+req.file.filename, function(err) {
+				res.status(err?500:400).end(v.error);
+			});
+		} else {
+			res.status(400).end(v.error);
+		}
+	} else if (common.compare_timestamps(req.body.starts, req.body.ends) < 0) {
+		res.status(400).json({success:false, error:"Before vs After = negative interval"});
+	} else {
+		var q = "INSERT INTO competition (title, description, starts, ends, posted, id_company, image) VALUES "+
+				"($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6) RETURNING id_competition";
+		
+		db.one(q, q_params) // query oneOrNone
+		.then(function(data) {
+			log.info("Created competition with id: " + data.id_competition);
+			res.set({'ETag': data.id_competition});
+			res.status(201).end();
+		}, function(err) {
+			log.error(reason);
+			res.status(500).end('Server internal error. ');
+		});
 	}
-
-	if (common.compare_timestamps(req.body.starts, req.body.ends) < 0) {
-		res.status(400).json({success:false, error:"Before vs After = negative interval"}); return;
-	}
-	
-	var q = "INSERT INTO competition (title, description, starts, ends, posted, id_company, image) VALUES "+
-			"($1, $2, $3, $4, CURRENT_TIMESTAMP, $5, $6) RETURNING id_competition";
-	
-	db.one(q, q_params) // query oneOrNone
-	.then(function(data) {
-		log.info("Created competition with id: " + data.id_competition);
-		res.set({'ETag': data.id_competition});
-		res.status(201).end();
-	}, function(err) {
-		//log.info("something went wrong", err);
-	});
 });
 
 /** LIMIT WITHOUT NEED OF PARAMETERS **/
-app.get('/api/v1/competitions', function (req, res) {
+app.get('/competitions', function (req, res) {
 	var q = "SELECT t.id_competition, t.title, t.image, c.name, c.id_company FROM competition t, company c WHERE c.id_company = t.id_company";
-	var q_params = new Array();
+	var q_params = [];
 	
 	// Get parameters from URL
 	title = req.query.title;
@@ -150,13 +140,15 @@ app.get('/api/v1/competitions', function (req, res) {
 	}
 	
 	// Limit has to be a number
-	if (limit !== undefined && isNaN(limit))
+	if (limit !== undefined && isNaN(limit)) {
 		res.status(400).end("Limit provided is not a integer number. Please refer to documentation or provide a integer."); return;
-
+	}
+	
 	// Offset has to be a number
-	if (offset !== undefined && isNaN(offset))
+	if (offset !== undefined && isNaN(offset)) {
 		res.status(400).end("Offset provided is not a integer number. Please refer to documentation or provide a integer."); return;
-
+	}
+	
 	// DEFAULT LIMIT defined at config.js
 	q_params.push(limit < cfg.DEFAULT_QUERY_LIMIT_POST ? limit : cfg.DEFAULT_QUERY_LIMIT_POST);
 	q += " LIMIT ($" + q_params.length + ") ";
@@ -174,56 +166,58 @@ app.get('/api/v1/competitions', function (req, res) {
 		res.json(data);
 	}, function(reason){
 		log.error(reason);
-		sendStatus500Error(res);
+		res.status(500).end('Server internal error. ');
 	});
 });
 
-app.get('/api/v1/competitions/:id_competition', function (req, res) {
+app.get('/competitions/:id_competition', function (req, res) {
 	// Validade parameters from URL
 	var id_competition = req.params.id_competition;
 	var q = "SELECT * FROM competition WHERE id_competition = ($1);";
 
 	if (id_competition === undefined || isNaN(id_competition)) {
-		res.status(400).end("[BAD REQUEST] Invalid parameters provided."); return;
+		res.status(400).end("[BAD REQUEST] Invalid parameters provided.");
+	} else {
+		db.one(q, [id_competition])
+			.then(function(data){
+				res.json(data);
+			}, function(reason){
+				if (reason.indexOf('No data returned') != -1) {
+					res.status(404).end("Resource not found");
+				} else {
+					log.error(reason);
+					res.status(500).end('Server internal error. ');
+				}
+			});
 	}
-	
-	db.one(q, [id_competition])
-	.then(function(data){
-		res.json(data);
-	}, function(reason){
-		if (reason.indexOf('No data returned') != -1) {
-			res.status(404).end("Resource not found");
-		} else {
-			log.error(reason);
-			sendStatus500Error(res);
-		}
-	});
 });
 
 // accept DELETE request at /company/:id_company
-app.delete('/api/v1/competitions/:id_competition', function (req, res) {
+app.delete('/competitions/:id_competition', function (req, res) {
 	// Validade parameters from URL
 	var id_competition = req.params.id_competition;
-	var q = "DELETE FROM competition WHERE id_competition = ($1);";
+	var q = "DELETE FROM competition WHERE id_competition = ($1) RETURNING image";
 
 	if (id_competition === undefined || isNaN(id_competition)) {
-		res.status(400).end("[BAD REQUEST] Invalid parameters provided."); return;
+		res.status(400).end("[BAD REQUEST] Invalid parameters provided.");
+	} else {
+		db.one(q, [id_competition])
+		.then(function(data){
+			fs.unlink(cfg.DEFAULT_UPLOAD_DIR_COMPETITION+data.image, function (err) {
+				res.status(err?500:204).json(err?{success:false}:{success:true});
+			});
+		}, function(reason){
+			if (reason.indexOf('No data returned from the query.') != -1) {
+				res.status(404).end("Resource not found");
+			}
+			log.error(reason);
+			res.status(500).end('Server internal error. ');
+		});
 	}
-	
-	db.none(q, [id_competition])
-	.then(function(data){
-		res.status(204).json({success : true});
-	}, function(reason){
-		if (reason.indexOf('No data returned from the query.') != -1) {
-			res.status(404).end("Resource not found");
-		}
-		log.error(reason);
-		sendStatus500Error(res);
-	});
 });
 
 // accept PUT request at /user
-app.put('/api/v1/competitions/:id_competition', upload.single('image'), function (req, res) {
+app.put('/competitions/:id_competition', upload.single('image'), function (req, res) {
 	// Validade parameters from request/url
 	var q_params = [
 		req.body.title,												// competition title	
@@ -236,34 +230,38 @@ app.put('/api/v1/competitions/:id_competition', upload.single('image'), function
 
 	var v = common.is_data_valid(['string', 'string', 'timestamp', 'timestamp', 'int', 'int', 'uuid'], q_params);
 	if (!v.success) { // verify errors in provided parameters
-		res.status(400).end(v.error); return;
-	}
-	
-	var q = "UPDATE competition competition_new SET (title, description, starts, ends, id_company, image) = "+
-			"($1, $2, $3, $4, $5, $7) FROM competition competition_old WHERE "+
-			"competition_new.id_competition = competition_old.id_competition AND competition_new.id_competition = ($6) " + 
-			"RETURNING competition_old.image";
-	
-	if (req.file === undefined) {
-		q = "UPDATE competition SET (title, description, starts, ends, id_company) = "+
-			"($1, $2, $3, $4, $5) WHERE id_competition = ($6);";
-		q_params.splice(q_params.indexOf(undefined),1); // remove undefined
-	}
-	
-	db.oneOrNone(q, q_params) // query oneOrNone
-	.then(function(data){
-		if (req.file_path !== undefined) // if file uploaded, delete old file
-			fs.unlink('./uploads/competition/'+data.file_path);
+		if (req.file !== undefined) { // file must be deleted if parameters are wrong
+			fs.unlink(cfg.DEFAULT_UPLOAD_DIR_COMPETITION+req.file.filename, function(err) {
+				res.status(err?500:400).end(v.error);
+			});
+		} else {
+			res.status(400).end(v.error); return;
+		}
+	} else {
+		var q = "UPDATE competition competition_new SET (title, description, starts, ends, id_company, image) = "+
+				"($1, $2, $3, $4, $5, $7) FROM competition competition_old WHERE "+
+				"competition_new.id_competition = competition_old.id_competition AND competition_new.id_competition = ($6) " + 
+				"RETURNING competition_old.image";
 		
-		log.info("Updated competition!");
-		res.status(200).json({success : true});
-	}, function(reason) {
-		log.info(reason);
-	});
+		if (req.file === undefined) {
+			q = "UPDATE competition SET (title, description, starts, ends, id_company) = "+
+				"($1, $2, $3, $4, $5) WHERE id_competition = ($6);";
+			q_params.splice(q_params.indexOf(undefined),1); // remove undefined
+		}
+		
+		db.oneOrNone(q, q_params) // query oneOrNone
+		.then(function(data){
+			if (req.file !== undefined) { // there is a new file
+				fs.unlink(cfg.DEFAULT_UPLOAD_DIR_COMPETITION+data.image, function (err) {
+					res.status(err?500:200).json(err?{success:false}:{success:true});
+				});
+			} else {
+				log.info("Updated competition! ");
+				res.status(200).json({success : true});
+			}
+		}, function(reason) {
+			log.info(reason);
+			res.status(500).end('Server internal error. ');
+		});
+	}
 });
-
-
-function sendStatus500Error(res) {
-	res.writeHead(500, {'content-type': 'text/plain'});
-	res.end('Server internal error. ');
-}

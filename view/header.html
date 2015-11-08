@@ -1,0 +1,33 @@
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header_navbar" aria-expanded="false" aria-controls="navbar">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="/hot">Sinestesia - Página Inicial</a>
+	</div>
+	<div id="header_navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+	  <ul class="nav navbar-nav">
+		<li ng-class="{active: $state.includes('user.hot')}">
+			<a href="/hot" data-toggle="collapse" data-target=".in">Hot</a>
+		</li>
+		<li ng-class="{active: $state.includes('user.trending')}">
+			<a href="/trending" data-toggle="collapse" data-target=".in">Trending</a>
+		</li>
+		<li ng-class="{active: $state.includes('user.vote')}">
+			<a href="/vote" data-toggle="collapse" data-target=".in">Vote</a>
+		</li>
+		<li ng-class="{active: $state.includes('user.competition')}">
+			<a href="/competitions" data-toggle="collapse" data-target=".in">Competitions</a>
+		</li>
+		<li>
+			<a href="/logout">Logout</a>
+		</li>
+	  </ul>
+	</div><!--/.nav-collapse -->
+  </div>
+</nav>

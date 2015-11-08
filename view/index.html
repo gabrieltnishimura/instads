@@ -1,27 +1,35 @@
-<!-- views/index.ejs -->
 <!doctype html>
 <html>
-<head>
-    <title>Node Authentication</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css"> <!-- load fontawesome -->
-    <style>
-        body        { padding-top:80px; }
-    </style>
-</head>
-<body>
-<div class="container">
-
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> Node Authentication</h1>
-
-        <p>Login or Register with:</p>
-
-        <a href="/login.html" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/signup.html" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-		<a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
-    </div>
-
-</div>
-</body>
+	<head>
+		<!-- METADATA -->
+		<meta charset="utf-8">
+		<title>Instads</title>
+		<meta name="description" content="Instads Initial Page">
+		<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+		<base href="/">
+		
+		<!-- CSS includes -->
+		<link rel="stylesheet" href="css/bootstrap.min.css"> <!-- load bootstrap css -->
+		<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css"> <!-- load fontawesome -->
+		<link rel="stylesheet" href="css/footer.css">
+		<!-- End CSS includes -->
+	</head>
+	<body ng-app="instadsWebApp">
+		<div ui-view="header"></div>
+		<div ui-view="content"></div>
+		<div ui-view="footer"></div>
+		
+		<script src="js/libs/jquery.js"></script><!-- load jquery -->
+		<script src="js/libs/angular.min.js"></script><!-- load angular -->
+		<script src="js/libs/angular-ui-router.min.js"></script>
+		<script src="js/libs/bootstrap.min.js"></script><!-- load angular -->
+		<script src="js/libs/ui-bootstrap-tpls-0.14.3.min.js"></script>
+		<script src="js/libs/ng-infinite-scroll.min.js"></script><!-- load infinite scroll -->
+		<script src="js/app.js"></script>
+		<script src="js/routes.js"></script>
+		<script src="js/controllers/HotController.js"></script>
+		<script src="js/controllers/TrendingController.js"></script>
+		<script src="js/controllers/VoteController.js"></script>
+		<script src="js/controllers/CompetitionsController.js"></script>
+	</body>
 </html>

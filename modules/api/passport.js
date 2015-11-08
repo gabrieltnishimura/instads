@@ -2,7 +2,7 @@
 
 var LocalStrategy   = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
-var common 		= require('../common');
+var common 		= require('../../common');
 var db 			= common.db; // Database related imports
 var bcrypt   	= common.bcrypt; // Passport and Auth related imports
 var log 		= common.log; // Logging related imports

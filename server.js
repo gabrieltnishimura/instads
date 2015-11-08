@@ -12,12 +12,18 @@ var session      	= common.session;
 var pgSession 		= common.pgSession;
 var db 				= common.db;			// Database related imports
 
-var server 			= app.listen(3000, function () {
-	var host = server.address().address;
-	var port = server.address().port;
-	log.info('Instads REST API listening at http://%s:%s', host, port);
-});
-
+var server = express()
+	.use('/api/v1', app) // backend is express app
+	.use('/', express.static("./view")) // www is public/static files
+	.all('/*', function (req, res, next) {
+		res.sendFile('/view/index.html', {root: __dirname});
+	})
+	.listen(process.env.PORT || 3000, function () {
+		var host = server.address().address;
+		var port = server.address().port;
+		log.info('Instads REST API listening at http://%s:%s', host, port);
+	});
+	
 app.use(express.static("./view")); // before sessions please
 app.use(cookieParser()); 		// read cookies (needed for auth)
 app.use(bodyParser.urlencoded({extended: true})); // this is like super important
@@ -32,12 +38,13 @@ app.use(session({
 	saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
-require('./modules/passport')(passport);
+require('./modules/api/passport')(passport);
 app.use(morgan('short'));
 
-require("./modules/file_server");
-require("./modules/dao_post");
-require("./modules/dao_user");
-require("./modules/dao_company");
-require("./modules/dao_competition");
-require("./modules/view");
+require("./modules/api/file_server");
+require("./modules/api/dao_post");
+require("./modules/api/dao_user");
+require("./modules/api/dao_company");
+require("./modules/api/dao_competition");
+require("./modules/view/desktop_view");
+require("./modules/view/mobile_view");

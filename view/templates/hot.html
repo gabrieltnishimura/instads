@@ -1,0 +1,14 @@
+<div id="post-list" class="row">
+	<div class="col-sm-12" infinite-scroll='instads.nextPage()' infinite-scroll-disabled='instads.busy' infinite-scroll-distance='1'>
+		<div ng-repeat="post in instads.posts">
+			<a ui-sref="home.post({{post.id_post}})">Post Title: {{ post.title }}</a>
+			<img ng-if="post.mimetype.indexOf('image') >= 0" class="img-responsive" ng-src="{{getImageSrc(post.file_path)}}">
+			<video id="video{{post.id_post}}" ng-click="playOrPause(post.id_post)" ng-if="post.mimetype.indexOf('video') >= 0" width="100%" controls>
+				<source src="{{getVideoSrc(post.file_path)}}" type="{{post.mimetype}}">
+				Your browser does not support the video tag.
+			</video>
+		</div>
+		<div ng-show='instads.busy'>Loading data...</div>
+		<div ng-show='instads.end'>There is no more data to show...</div>
+	</div>
+</div>

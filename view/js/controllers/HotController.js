@@ -1,12 +1,27 @@
-var instads_posts = angular.module('instads_posts', ['infinite-scroll']);
-
-instads_posts.controller('PostsController', function($scope, Instads) {
-  $scope.instads = new Instads();
+angular.module('instadsWebApp')
+.controller('HotController', function($scope, HotPosts) {
+	$scope.instads = new HotPosts();
+	var uri = '/api/v1';
+	$scope.getVideoSrc = function (videoSrc) {
+		return  uri + '/file/video/' + videoSrc;
+	};
+	$scope.getImageSrc = function (imageSrc) {
+		return uri + '/file/post/' + imageSrc;
+	};
+	$scope.playOrPause = function(e) {
+		var v = angular.element("#video"+e)[0];
+		if (v.paused) {
+			v.play();
+		} else {
+			v.pause();
+		}
+	}
 });
 
-// Instads constructor function to encapsulate HTTP and pagination logic
-instads_posts.factory('Instads', function($http) {
-	var Instads = function() {
+// Hot Posts constructor function to encapsulate HTTP and pagination logic
+angular.module('instadsWebApp')
+.factory('HotPosts', function($http) {
+	var HotPosts = function() {
 		this.posts = new Array();
 		this.busy = false;
 		this.end = false;
@@ -15,12 +30,12 @@ instads_posts.factory('Instads', function($http) {
 		this.timeout = 5000; // timeout for when there are no more posts to load
 	};
 
-	Instads.prototype.nextPage = function() {
+	HotPosts.prototype.nextPage = function() {
 		if (this.busy) return;
 		if (this.zerocount > 4) return;
 		this.busy = true;
 
-		$http.get('/api/v1/posts?offset=' + this.after)
+		$http.get('/api/v1/posts?offset=' + this.after) // promise
 		.success(function(data) {
 			if (this.zerocount < 4) {
 				if (data.length > 0) {
@@ -42,14 +57,14 @@ instads_posts.factory('Instads', function($http) {
 			this.busy = false;
 		}.bind(this))
 		.error(function(data) {
-			console.log('Error: ' + data);
+			console.log('Error: ', data);
 		});
 	};
 
-	Instads.prototype.undoZeroCount = function() {
+	HotPosts.prototype.undoZeroCount = function() {
 		console.log("able to do it again");
 		this.zerocount = 0;
 	};
 	
-	return Instads;
+	return HotPosts;
 });

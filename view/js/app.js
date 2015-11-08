@@ -1,0 +1,1 @@
+var instads = angular.module('instadsWebApp', ['infinite-scroll', 'ui.router', 'ui.bootstrap']);

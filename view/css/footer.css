@@ -1,0 +1,35 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color: #f5f5f5;
+}
+
+.footer_nav>li {
+	float: left;
+	width: 25%;
+	text-align: center;
+}
+.footer_nav>li>.glyphicon {
+	margin-top: 4px;
+	font-size: 31px;
+	display: block;
+	width: 100%;
+}
+footer nav .container {
+	padding-right: 0;
+	padding-left: 0;
+	width: 100%;
+}
+.active_footer {
+	background-color: #6696C8;
+}
+.active_footer>span{
+	text-decoration: none;
+	color: #fff;
+}

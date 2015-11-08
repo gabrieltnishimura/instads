@@ -1,4 +1,4 @@
-var common 	= require('./common.js');	// Common
+var common 	= require('./common');	// Common
 
 function importTest(name, path) {
     describe(name, function () {
