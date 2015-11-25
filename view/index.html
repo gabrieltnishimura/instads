@@ -5,31 +5,47 @@
 		<meta charset="utf-8">
 		<title>Instads</title>
 		<meta name="description" content="Instads Initial Page">
-		<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- End METADATA -->
 		<base href="/">
 		
 		<!-- CSS includes -->
-		<link rel="stylesheet" href="css/bootstrap.min.css"> <!-- load bootstrap css -->
-		<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css"> <!-- load fontawesome -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/footer.css">
+		<link rel="stylesheet" href="css/main.css">
 		<!-- End CSS includes -->
 	</head>
-	<body ng-app="instadsWebApp">
-		<div ui-view="header"></div>
-		<div ui-view="content"></div>
-		<div ui-view="footer"></div>
+	<body ng-app="instadsWebApp" ng-controller="NavigationController">
+	<div id="fb-root"></div>
+		<header ui-view="header"></header>
+		<div class="container-fluid" ui-view="content" style="top: -19px;position: relative;"></div>
+		<footer ui-view="footer"></footer>
 		
-		<script src="js/libs/jquery.js"></script><!-- load jquery -->
-		<script src="js/libs/angular.min.js"></script><!-- load angular -->
+		<!--- JQ,NG,BTS and FB DEPENDENCIES --->
+		<script src="js/libs/jquery.js"></script>
+		<script src="js/libs/angular.min.js"></script>
+		<script src="js/libs/bootstrap.min.js"></script>
 		<script src="js/libs/angular-ui-router.min.js"></script>
-		<script src="js/libs/bootstrap.min.js"></script><!-- load angular -->
 		<script src="js/libs/ui-bootstrap-tpls-0.14.3.min.js"></script>
-		<script src="js/libs/ng-infinite-scroll.min.js"></script><!-- load infinite scroll -->
+		<script src="js/libs/ng-infinite-scroll.min.js"></script>
+		<!--- END JQ,NG,BTS and FB DEPENDENCIES --->
+		
+		<!--- APPLICATION --->
 		<script src="js/app.js"></script>
 		<script src="js/routes.js"></script>
+		<!--- END APPLICATION --->
+		
+		<!--- Controllers --->
+		<script src="js/controllers/NavigationController.js"></script>
 		<script src="js/controllers/HotController.js"></script>
 		<script src="js/controllers/TrendingController.js"></script>
 		<script src="js/controllers/VoteController.js"></script>
 		<script src="js/controllers/CompetitionsController.js"></script>
+		<script src="js/controllers/SearchController.js"></script>
+		<script src="js/controllers/PostController.js"></script>
+		<script src="js/services/uri.js"></script>
+		<script src="js/services/facebook.js"></script>
+		<!--- End of Controllers --->
 	</body>
 </html>

@@ -1,65 +1,87 @@
 angular.module('instadsWebApp')
 .config(function($stateProvider, $urlRouterProvider, $locationProvider){
- 	// in summary, $urlRouterProvider lets you handle cases where the 
-	// state machine abstraction of the $stateProvider doesn’t make sense.
-
-    $stateProvider
+  $stateProvider
     .state('home',{
-        url: '/',
+        abstract: true,
+		template: '<ui-view/>',
         views: {
             'header': {
-                templateUrl: '/templates/header.html'
-            },
-            'content': {
-                templateUrl: '/templates/hot.html',
-				controller: 'HotController'
+                templateUrl: 'templates/header.html'
             },
             'footer': {
-                templateUrl: '/templates/footer.html'
+                templateUrl: 'templates/footer.html'
             }
         }
     })
- 
-    .state('home.trending', {
-        url: 'trending',
+	.state('home.hot', {
+        url: '/',
         views: {
             'content@': {
-                templateUrl: 'templates/trending.html',
+                templateUrl: 'templates/homeHot.html',
+                controller: 'HotController'
+            }
+        }
+    })
+    .state('home.trending', {
+        url: '/trending',
+        views: {
+            'content@': {
+                templateUrl: 'templates/homeTrending.html',
                 controller: 'TrendingController'
             }
         }
     })
- 
     .state('home.vote', {
-        url: 'vote',
+        url: '/vote',
         views: {
             'content@': {
-                templateUrl: 'templates/vote.html',
+                templateUrl: 'templates/homeVote.html',
                 controller: 'VoteController'
             }
         }
     })
- 
     .state('home.competitions', {
-        url: 'competitions',
+        url: '/competitions',
         views: {
             'content@': {
-                templateUrl: 'templates/competitions.html',
+                templateUrl: 'templates/homeCompetitions.html',
                 controller: 'CompetitionsController'      
             }
         }
     })
+    .state('home.search', {
+        url: '/search',
+        views: {
+            'content@': {
+                templateUrl: 'templates/homeSearch.html',
+                controller: 'SearchController'      
+            }
+        }
+    });
 	
-	.state('home.post',{
-        url: 'posts/:id_post',
+	$stateProvider
+	.state('reader',{
+        abstract: true,
+		template: '<ui-view/>',
+        views: {
+            'header': {
+                templateUrl: 'templates/header.html'
+            },
+            'footer': {
+                templateUrl: 'templates/footer.html'
+            }
+        }
+    })
+	.state('reader.post',{
+        url: '/post/:id_post',
         views: {
             'content': {
-                templateUrl: '/templates/post.html',
+                templateUrl: 'templates/post.html',
 				controller: 'PostController'
             },
         }
-    })
-	;
+    });
+	
 	$locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
 });

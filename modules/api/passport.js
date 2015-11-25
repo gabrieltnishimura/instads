@@ -78,6 +78,7 @@ module.exports = function(passport) {
     function(req, email, password, done) { // callback with email and password from our form
 		// find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
+		log.info("oi");
 		db.one("SELECT * FROM instads_user WHERE email = ($1)", [email])
 		.then(function(data){
 			bcrypt.compare(password, data.password, function(err, res) {
@@ -97,7 +98,7 @@ module.exports = function(passport) {
     // =========================================================================
     // FACEBOOK ================================================================
     // =========================================================================
-    passport.use(new FacebookStrategy({
+    passport.use('facebook', new FacebookStrategy({
 
         // pull in our app id and secret from our auth.js file
         clientID        : cfg.facebookAuth.clientID,
@@ -108,26 +109,21 @@ module.exports = function(passport) {
 
     // facebook will send back the token and profile
     function(token, refreshToken, profile, done) {
-
         // asynchronous
         process.nextTick(function() {
-			db.any("SELECT * FROM instads_user WHERE facebook_user_id = ($1)", [profile.id])
+			db.one("SELECT * FROM instads_user WHERE facebook_user_id = ($1)", [profile.id])
 			.then(function(data){
-				if (data.length != 0) {
-					done(null, {id: data[0].id_user, email : data[0].email});
-					console.log("hey");
-				} else {
-					db.one("INSERT INTO instads_user (name, email, access_token, facebook_user_id)"+
-						" VALUES ($1, $2, $3, $4) RETURNING id_user", [profile.name.givenName + ' ' + profile.name.familyName, profile.emails[0].value, token, profile.id])
-					.then(function(data){
-						console.log("Signup of user with id: " + data.id_user);
-						return done(null, {id: data.id_user, email : profile.emails[0].value});
-					}, function(reason){
-						return done(reason);
-					});
-				}
+				console.log("Signin of user with id: " + data[0].id_user);
+				done(null, {id: data[0].id_user, email : data[0].email});
 			}, function(reason) { // error
-				return done(null, false);
+				db.one("INSERT INTO instads_user (name, email, access_token, facebook_user_id)"+
+					" VALUES ($1, $2, $3, $4) RETURNING id_user", [profile.name.givenName + ' ' + profile.name.familyName, profile.emails[0].value, token, profile.id])
+				.then(function(data){
+					console.log("Signup of user with id: " + data.id_user);
+					return done(null, {id: data.id_user, email : profile.emails[0].value});
+				}, function(reason){
+					return done(null, false);
+				});
 			});
         });
 

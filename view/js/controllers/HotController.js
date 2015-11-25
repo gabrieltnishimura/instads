@@ -1,12 +1,12 @@
 angular.module('instadsWebApp')
-.controller('HotController', function($scope, HotPosts) {
+.controller('HotController', function($scope, $state, HotPosts, URI) {
+	$scope.$state = $state;
 	$scope.instads = new HotPosts();
-	var uri = '/api/v1';
 	$scope.getVideoSrc = function (videoSrc) {
-		return  uri + '/file/video/' + videoSrc;
+		return  URI.video + videoSrc;
 	};
 	$scope.getImageSrc = function (imageSrc) {
-		return uri + '/file/post/' + imageSrc;
+		return URI.photo + imageSrc;
 	};
 	$scope.playOrPause = function(e) {
 		var v = angular.element("#video"+e)[0];
@@ -35,7 +35,7 @@ angular.module('instadsWebApp')
 		if (this.zerocount > 4) return;
 		this.busy = true;
 
-		$http.get('/api/v1/posts?offset=' + this.after) // promise
+		$http.get('/api/v1/posts?limit=4&offset=' + this.after) // promise
 		.success(function(data) {
 			if (this.zerocount < 4) {
 				if (data.length > 0) {
@@ -44,17 +44,19 @@ angular.module('instadsWebApp')
 						this.posts.push(data[each]);
 					}
 					this.after += data.length;
-					console.log(this.after)
+					console.log(this.after);
+					this.busy = false;
 				} else {
 					this.end = true;
 					this.zerocount++;
+					this.busy = false;
 				}
-			} else if (this.zerocount == 4){
-				console.log("wait for " + this.timeout);
+			} else {
+				console.log("Reached end of page and query is empty. Wait for [" + this.timeout + "ms]");
 				setTimeout(this.undoZeroCount, this.timeout);
 				this.zerocount++;
+				this.busy = false;
 			}
-			this.busy = false;
 		}.bind(this))
 		.error(function(data) {
 			console.log('Error: ', data);
@@ -62,7 +64,6 @@ angular.module('instadsWebApp')
 	};
 
 	HotPosts.prototype.undoZeroCount = function() {
-		console.log("able to do it again");
 		this.zerocount = 0;
 	};
 	

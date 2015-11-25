@@ -1,5 +1,6 @@
 angular.module('instadsWebApp')
-.controller('PostController', function($scope, $stateParams, $http) {
+.controller('PostController', function($scope, $state, $http) {
+	$scope.$state = $state;
 	var id_post = $stateParams.id_post;
-	$http.get('')
+	console.log(id_post);
 });

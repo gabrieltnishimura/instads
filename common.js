@@ -21,6 +21,7 @@ var config		= require('C:/Users/U/Desktop/config.js');	// (18) Contains sensitiv
 var pgp 		= require('pg-promise')();					// (19) 
 var db			= pgp(config.DATABASE_URL);					// (20) Database connection pool
 var bcrypt   	= require('bcrypt-nodejs');					// (21) Encryption
+var jwt 		= require('jsonwebtoken');					// (22) Web Tokens
 
 // Exporting modules
 exports.chai 			= chai;			//1
@@ -46,6 +47,7 @@ exports.config			= config;		//18
 exports.pgp				= pgp;			//19
 exports.db 				= db;			//20
 exports.bcrypt			= bcrypt;		//21
+exports.jwt				= jwt;			//22
 moment().format();
 var log = bunyan.createLogger({
 	name: 'instads',
@@ -194,11 +196,16 @@ exports.isLoggedIn = function(req, res, next) {
 			//req.login({id : data.id_user, email : data.email}, function(err) {});
 			return next();
 		});
-	} else {
-		// if user is authenticated in the session, carry on 
-		if (req.isAuthenticated())
+	} else if (req.headers.cookie != null){
+		jwt.verify(parseCookies(req).jwt, config.app_secret, function(err, decoded) {
+			if (err) {res.status(403).json({error:"Unauthorized...", err: err});}
+			//console.log(decoded) // bar
+			log.info("[Auth with jwt]");
 			return next();
-
+		});
+	} else if (req.isAuthenticated()){ // if user is authenticated in the session, carry on 
+		return next();
+	} else {
 		// if they aren't redirect them to the home page
 		res.status(403).json({error:"Unauthorized..."});
 	}
@@ -299,5 +306,16 @@ isValidCNPJ = function (cnpj) {
     
 }
 
+function parseCookies (request) {
+    var list = {},
+        rc = request.headers.cookie;
+
+    rc && rc.split(';').forEach(function( cookie ) {
+        var parts = cookie.split('=');
+        list[parts.shift().trim()] = decodeURI(parts.join('='));
+    });
+
+    return list;
+}
 
 

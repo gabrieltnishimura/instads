@@ -1,19 +1,20 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
 	<div class="container">
 		<ul class="nav footer_nav">
-			<li class="active_footer">
-				<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+			<li ng-click="$state.go('home.hot')" ng-class="{active_footer: $state.includes('home.hot')}">
+				<span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
 				<span class="glyphicon-class">Hot</span>
 			</li>
-			<li>
+			<li ng-click="$state.go('home.trending')" ng-class="{active_footer: $state.includes('home.trending')}">
 				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 				<span class="glyphicon-class">Trending</span>
 			</li>
-			<li>
+			<li ng-click="$state.go('home.competitions')" ng-class="{active_footer: $state.includes('home.competitions')}">
 				<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
 				<span class="glyphicon-class">Vote</span>
+				
 			</li>
-			<li>
+			<li ng-click="$state.go('home.search')" ng-class="{active_footer: $state.includes('home.search')}">
 				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				<span class="glyphicon-class">Search</span>
 			</li>

@@ -1,0 +1,15 @@
+<div id="post-list" class="row">
+	<div class="col-sm-12" infinite-scroll='instads.nextPage()' infinite-scroll-disabled='instads.busy' infinite-scroll-distance='1'>
+		<div ng-repeat="post in instads.posts" align="center" class="embed-responsive embed-responsive-16by9">
+			<a ui-sref="home.post(post.id_post)">Post Title: {{ post.title }}</a>
+			<img ng-if="post.mimetype.indexOf('image') >= 0" class="img-responsive" ng-src="{{getImageSrc(post.file_path)}}">
+			<video id="video{{post.id_post}}" ng-click="playOrPause(post.id_post)" ng-if="post.mimetype.indexOf('video') >= 0" controls class="embed-responsive-item">
+				<source src="{{getVideoSrc(post.file_path)}}" type="{{post.mimetype}}">
+				Your browser does not support the video tag.
+			</video>
+		</div>
+		<div ng-show='instads.busy'>Loading data...</div>
+		<img ng-show="instads.busy" id="center_loader" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+		<div ng-show='instads.end'>There is no more data to show...</div>
+	</div>
+</div>

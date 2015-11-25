@@ -1,10 +1,5 @@
 angular.module('instadsWebApp')
-.controller('CompetitionsController', function($scope) {
-	$http.get('/api/v1/posts')
-		.success(function(data) {
-			
-		})
-		.error(function(data) {
-			
-		});
+.controller('CompetitionsController', function($scope, $state) {
+	$scope.$state = $state;
+	console.log("@todo competitions controller");
 });

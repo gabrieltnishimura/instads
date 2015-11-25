@@ -1,5 +1,6 @@
 angular.module('instadsWebApp')
-.controller('TrendingController', function($scope, TrendingPosts) {
+.controller('TrendingController', function($scope, $state, TrendingPosts) {
+	$scope.$state = $state;
 	$scope.instads = new TrendingPosts('/api/v1/tposts');
 });
 

@@ -61,13 +61,8 @@ var cfg 		= common.config;
 var log			= common.log;
 // Database related imports
 var db 			= common.db;
-// Uniqueness related imports
-var uuid 		= common.uuid;
 // File upload related imports
 var fs 			= common.fs;
-var multer  	= common.multer;
-// Passport related stuff
-var passport	= common.passport;
 // ---- [end of imports] ----
 
 // Creating upload middleware for User Routes
@@ -75,45 +70,6 @@ var upload 		= common.getMulterObject(
 	cfg.DEFAULT_UPLOAD_DIR_USER,
 	cfg.DEFAULT_MAXIMUM_UPLOAD_LIMIT_USER,
 	['image']);
-
-// =====================================
-// LOGIN ROUTES ========================
-// =====================================
-app.post('/login', function(req, res, next) {
-	passport.authenticate('local-login', function(err, user, info) {
-		if (err) { return next(err); }
-		
-		if (!user) { return res.status(401).json({error: "Wrong username or password."}); }
-		
-		req.login(user, function(err) {
-			if (err) { return next(err); }
-			
-			return res.redirect('/hot');
-		});
-	})(req, res, next);
-});
-
-// =====================================
-// SIGNUP ROUTE ========================
-// =====================================
-app.post('/authentication', function(req, res, next) {
-	passport.authenticate('local-signup', function(err, user, info) {
-		if (err) { return next(err); }
-		if (!user) { return res.redirect('login.html'); }
-	})(req, res, next);
-});
-
-// =====================================
-// FACEBOOK ROUTES =====================
-// =====================================
-// route for facebook authentication and login
-app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
-
-// handle the callback after facebook has authenticated the user
-app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-	successRedirect : '/hot',
-	failureRedirect : '/'
-}));
 
 app.put('/users', upload.single('avatar'), function(req, res){
 	var q_params = [
@@ -144,12 +100,4 @@ app.put('/users', upload.single('avatar'), function(req, res){
 		
 		res.status(200).json({success : true});
 	});
-});
-
-// =====================================
-// LOGOUT ROUTES =======================
-// =====================================
-app.get('/logout', common.isLoggedIn, function(req, res) {
-	req.logout();
-	res.redirect('/');
 });

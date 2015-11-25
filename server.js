@@ -41,6 +41,7 @@ app.use(passport.session());
 require('./modules/api/passport')(passport);
 app.use(morgan('short'));
 
+require("./modules/api/authentication");
 require("./modules/api/file_server");
 require("./modules/api/dao_post");
 require("./modules/api/dao_user");
